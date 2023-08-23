@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import "../../styles/individualUser/RegistrationPage.css";
+import '../../styles/issuingAuthority/RegistrationPage.css'
 
 function RegistrationPage() {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
+    type:"",
     country: "",
     profilePhoto: null,
   });
@@ -21,21 +22,22 @@ function RegistrationPage() {
     e.preventDefault();
     console.log(formData);
     setFormData({
-      fullName: "",
-      email: "",
-      country: "",
-      profilePhoto: null,
-    });
+        fullName: "",
+        email: "",
+        type: "",
+        country: "",
+        profilePhoto: null,
+      });
   };
 
-  return (
-      <div className="user-register-main-container">
-        <div className="user-register-registration-container">
-          <form className="user-register-form" onSubmit={handleSubmit}>
-            <div className="user-register-registration-header">
-              <div className="user-register-registration-title">User Registration</div>
+  return(
+    <div className="ia-register-main-container">
+        <div className="ia-register-registration-container">
+          <form className="ia-register-form" onSubmit={handleSubmit}>
+            <div className="ia-register-registration-header">
+              <div className="ia-register-registration-title">Authority Registration</div>
             </div>
-            <div className="user-register-form-group">
+            <div className="ia-register-form-group">
               <input
                 type="text"
                 id="fullName"
@@ -46,7 +48,7 @@ function RegistrationPage() {
                 placeholder="Enter Full Name*"
               />
             </div>
-            <div className="user-register-form-group">
+            <div className="ia-register-form-group">
               <input
                 type="email"
                 id="email"
@@ -57,7 +59,22 @@ function RegistrationPage() {
                 placeholder="Enter Email*"
               />
             </div>
-            <div className="user-register-form-group">
+            <div className="ia-register-form-group">
+              <select
+                id="type"
+                name="type"
+                value={formData.type}
+                onChange={handleChange}
+                required
+              >
+                <option value="" disabled hidden>
+                  Organization Type*
+                </option>
+                <option value="Institute">Institute</option>
+                <option value="Corporate">Corporate</option>
+              </select>
+            </div>
+            <div className="ia-register-form-group">
               <select
                 id="country"
                 name="country"
@@ -72,7 +89,7 @@ function RegistrationPage() {
                 <option value="CA">Canada</option>
               </select>
             </div>
-            <div className="user-register-form-group">
+            <div className="ia-register-form-group">
               <input
                 type="file"
                 id="profilePhoto"
@@ -83,7 +100,7 @@ function RegistrationPage() {
                 placeholder="Profile Photo"
               />
             </div>
-            <button className="user-register-button" type="submit">REGISTER</button>
+            <button className="ia-register-button" type="submit">REGISTER</button>
           </form>
         </div>
       </div>

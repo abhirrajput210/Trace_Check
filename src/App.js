@@ -1,15 +1,21 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import RegistrationPage from './components/individualUser/RegistrationPage';
-import Navbar from './components/navbar/Navbar';
+// import Navbar from './components/navbar/Navbar';
+import Footer from './components/footer/Footer';
+// import UserRegistrationPage from './pages/UserRegistrationPage';
+// import IARegistrationPage from './pages/IARegistrationPage'
+import CertificatesPage from './components/individualUser/userCertificates/CertificatesPage';
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        {/* <Route exact path="/" element={<RegistrationPage/>}/> */}
-        <Route exact path="/" element={<Navbar/>}/>
-      </Routes>
+      {/* <Navbar /> */}
+        <Routes>
+          {/* <Route exact path="/" element={<UserRegistrationPage/>}/> */}
+          {/* <Route exact path="/" element={<IARegistrationPage/>}/> */}
+          {/* <Route exact path="/" element={<CertificatesPage/>}/> */}
+        </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

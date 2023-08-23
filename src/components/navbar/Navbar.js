@@ -3,12 +3,12 @@ import '../../styles/navbar/Navbar.css'
 
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
       <div className="container d-flex justify-content-between align-items-center">
         <a className="navbar-brand" href="/">
           Logo
         </a>
-        <div className="d-flex"> {/* Wrap menu items and Connect Wallet button */}
+        <div className="d-flex"> 
           <ul className="navbar-nav">
             <li className="nav-item">
               <a className="nav-link" href="/">
