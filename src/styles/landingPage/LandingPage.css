@@ -1,6 +1,6 @@
 /* Reset some default styles */
-body, h1, p {max-width: 100%;
-  background-color:#41246D;
+body, p {max-width: 100%;
+  background-color:#fefeff;
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* Add this to prevent horizontal scrolling */

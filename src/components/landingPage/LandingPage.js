@@ -6,6 +6,7 @@ import Image3 from '../../assets/landingimg2.png'
 import css from '../../styles/landingPage/LandingPage.css'; // Import the CSS file for this component
 
 function App() {
+  
   return (
     <section className="home-banner">
       <div className="container">

@@ -6,7 +6,11 @@ import Footer from './components/footer/Footer';
 // import IARegistrationPage from './pages/IARegistrationPage'
 import CertificatesPage from './components/individualUser/userCertificates/CertificatesPage';
 import LandingPage from './components/landingPage/LandingPage';
+import ContentInfo from './components/issuingAuthority/ContentInfo'
 import GetStarted from './components/landingPage/GetStarted';
+import IaDashboard from './components/issuingAuthority/IaDashboard';
+import IuDashboard from './components/issuingAuthority/IuDashboard';
+
 function App() {
   return (
     <BrowserRouter>
@@ -16,8 +20,10 @@ function App() {
           {/* <Route exact path="/" element={<IARegistrationPage/>}/> */}
           {/* <Route exact path="/" element={<CertificatesPage/>}/> */}
         <LandingPage/>
+        <ContentInfo/>
         <GetStarted/>
-   
+      
+       <IuDashboard/>
    
     </BrowserRouter>
     
