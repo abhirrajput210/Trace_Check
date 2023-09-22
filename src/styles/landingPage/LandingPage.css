@@ -1,44 +1,39 @@
 /* Reset some default styles */
-body, p {max-width: 100%;
-  background-color:#fefeff;
+body,
+p {
+  max-width: 100%;
+  background-color: #fefeff;
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* Add this to prevent horizontal scrolling */
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 /* Global styles */
 
-
 /* Section styles */
 .home-banner {
-  background-color: #41246D;
+  background-color: #41246d;
   padding: 60px 0;
   display: flex; /* Use flexbox to control the vertical alignment */
   align-items: flex-end; /* Align items to the bottom of the container */
 }
 
-
 .container {
-  background-color: #41246D;
+  /* background-color: #41246D; */
   max-width: 100%;
   margin: 0 auto;
- 
+
   padding: 0 15px;
   overflow-x: hidden;
-  overflow-y: hidden; 
+  overflow-y: hidden;
 }
 
 /* Banner left styles */
 .banner-left {
   position: relative;
   padding-right: 10px;
-  display: flex;
-
-  justify-content: left;
-  flex-direction: row;
-  text-align: left;
- 
 }
 /* Image2 styles */
 .image2-opacity {
@@ -50,18 +45,18 @@ body, p {max-width: 100%;
 
 /* Banner content styles */
 .banner-content {
-  background-color: #41246D;
+  background-color: #41246d;
   color: #fff;
   border-radius: 5px;
   padding: 20px;
 }
 
-.banner-title {background-color: #41246D;
+.banner-title {
+  background-color: #41246d;
   margin-bottom: 20px;
   text-align: center;
   font-size: 60px;
   font-weight: 600;
- 
 }
 
 .banner-text {
@@ -78,7 +73,7 @@ body, p {max-width: 100%;
 .button-round-secondary {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #F23F80;
+  background-color: #f23f80;
   color: #fff;
   text-decoration: none;
   border-radius: 30px;

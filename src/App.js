@@ -1,32 +1,35 @@
-import   './App.css';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import Navbar from './components/navbar/Navbar';
-import Footer from './components/footer/Footer';
+import Footer from "./components/footer/Footer";
 // import UserRegistrationPage from './pages/UserRegistrationPage';
 // import IARegistrationPage from './pages/IARegistrationPage'
-import CertificatesPage from './components/individualUser/userCertificates/CertificatesPage';
-import LandingPage from './components/landingPage/LandingPage';
-import ContentInfo from './components/issuingAuthority/ContentInfo'
-import GetStarted from './components/landingPage/GetStarted';
-import IaDashboard from './components/issuingAuthority/IaDashboard';
-import IuDashboard from './components/issuingAuthority/IuDashboard';
+// import CertificatesPage from "./components/individualUser/userCertificates/CertificatesPage";
+import LandingPage from "./pages/LandingPage";
+
+import SingleCertificate from "./pages/SingleCertificate";
+import Navbar from "./components/navbar/Navbar";
+import UserRegistrationPage from "./pages/UserRegistrationPage";
+import IARegistrationPage from "./pages/IARegistrationPage";
+import UserDashboard from "./pages/UserDashboard";
+import AddCertificate from "./components/userDashboard/AddCertificate";
 
 function App() {
   return (
-    <BrowserRouter>
-      {/* <Navbar /> */}
-        
-          {/* <Route exact path="/" element={<UserRegistrationPage/>}/> */}
-          {/* <Route exact path="/" element={<IARegistrationPage/>}/> */}
-          {/* <Route exact path="/" element={<CertificatesPage/>}/> */}
-        <LandingPage/>
-        <ContentInfo/>
-        <GetStarted/>
-      
-       <IuDashboard/>
-   
-    </BrowserRouter>
-    
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route exact path="/" element={<LandingPage />} />
+        <Route path="/registration/user" element={<UserRegistrationPage />} />
+        <Route
+          path="/registration/issuing-authority"
+          element={<IARegistrationPage />}
+        />
+        <Route exact path="/user/dashboard" element={<UserDashboard />} />
+        <Route exact path="/Add-Certificate" element={<AddCertificate />} />
+        <Route exact path="/certificate" element={<SingleCertificate />} />
+      </Routes>
+    </Router>
   );
 }
 

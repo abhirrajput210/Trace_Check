@@ -1,39 +1,38 @@
 .navbar {
-    background-color: #41246D; 
-    height: 90px;
-    transition: background-color 0.3s;
-  }
-  
-  .navbar-dark .navbar-nav .nav-link {
-    color: white; 
-    margin-right: 55px; 
-    font-size: 18px;
-  }
-  
-  .navbar-dark .navbar-nav .nav-link:hover {
-    color: #d63384; 
-  }
-  
-  .connect-wallet-button {
-    background-color: #d63384; 
-    color: white; 
-    border-radius: 20px;
-    width: 25vh;
-    height: 6vh;
-    font-size: 18px;
-    border: none;
-  }
-  
-  .connect-wallet-button:hover {
-    background-color: #a62464; 
-  }
+  background-color: #41246d;
+  height: 80px;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+}
 
-  .fixed-top {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-  } 
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+  margin-right: 1rem;
+  font-size: 18px;
+}
 
- 
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #d63384;
+}
+
+.connect-wallet-button {
+  background-color: #d63384;
+  color: white;
+  border-radius: 20px;
+  padding: 10px 30px;
+  font-size: 18px;
+  border: none;
+}
+
+.connect-wallet-button:hover {
+  background-color: #a62464;
+}
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}

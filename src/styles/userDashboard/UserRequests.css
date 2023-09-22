@@ -1,0 +1,84 @@
+.user-requests {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .requests-main-header {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    margin-bottom: 10px; 
+    margin-right: 30px;
+  }
+
+  .request-type-filter {
+    display: flex;
+    align-items: center;
+  }
+  
+  .request-type-filter select {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+  
+  .request-certificate-button {
+    margin-left: 10px;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 10px;
+    background-color: #3B71CA;
+    border: none;
+    color: white;
+    width: 300px;
+  }
+  
+  .requests-table {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  
+  .requests-header {
+    display: flex;
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+  .header-item{
+    padding: 10px;
+    border: 1px solid #ccc;
+    flex: 1;
+    text-align: center;
+  }
+
+  .row-item {
+    padding: 10px;
+    border: 1px solid #ccc;
+    flex: 1;
+    text-align: center;
+    min-width: 150px;
+    max-width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  
+  .request-row {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .request-row:nth-child(odd) {
+    background-color: #f9f9f9;                                                                                                                                                      
+  }
+  
+  .request-row-content {
+    display: flex;
+    flex: 1;
+  }
+  

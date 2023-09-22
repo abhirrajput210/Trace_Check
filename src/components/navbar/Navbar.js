@@ -1,5 +1,5 @@
-import React from 'react'
-import '../../styles/navbar/Navbar.css'
+import React from "react";
+import "../../styles/navbar/Navbar.css";
 
 function Navbar() {
   return (
@@ -8,8 +8,8 @@ function Navbar() {
         <a className="navbar-brand" href="/">
           Logo
         </a>
-        <div className="d-flex"> 
-          <ul className="navbar-nav">
+        <div className="d-flex align-items-center justify-content-center">
+          <ul className="navbar-nav d-flex align-items-center justify-content-center">
             <li className="nav-item">
               <a className="nav-link" href="/">
                 HOME
@@ -26,7 +26,10 @@ function Navbar() {
               </a>
             </li>
             <li className="nav-item">
-            <a href="/connect-wallet" className="btn btn-primary connect-wallet-button">
+              <a
+                href="/connect-wallet"
+                className="btn btn-secondary connect-wallet-button d-flex align-items-center justify-content-center"
+              >
                 Connect Wallet
               </a>
             </li>
@@ -34,7 +37,7 @@ function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
