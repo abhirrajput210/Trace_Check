@@ -1,0 +1,59 @@
+.container {
+    margin-top: 50px;
+    border: none;
+  }
+  
+  .form-container {
+   
+      width: 100%; /* Adjust the width as needed */
+      max-width: 600px; /* Limit the maximum width if desired */
+      margin: 0 auto; /* Center the form horizontally */
+    }
+    
+  
+  
+  .form-heading {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  form {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  input[type="file"] {
+    padding: 8px 0;
+  }
+  
+  button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  

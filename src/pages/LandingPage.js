@@ -6,7 +6,6 @@ import Image3 from "../assets/landingimg2.png";
 import "../styles/landingPage/LandingPage.css"; // Import the CSS file for this component
 import ContentInfo from "../components/issuingAuthority/ContentInfo";
 import GetStarted from "../components/landingPage/GetStarted";
-import IuDashboard from "../components/issuingAuthority/IuDashboard";
 
 function App() {
   return (
@@ -52,7 +51,6 @@ function App() {
       </section>
       <ContentInfo />
       <GetStarted />
-      <IuDashboard />
     </>
   );
 }

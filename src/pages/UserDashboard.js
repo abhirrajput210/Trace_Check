@@ -56,10 +56,7 @@ function UserDashboard(props) {
         </div>
       </div>
 
-      <div
-        className="container"
-        style={{ marginLeft: "-452px", marginTop: "0px" }}
-      >
+      <div className="container">
         <ul className="nav nav-tabs">
           <li className="nav-item">
             <button

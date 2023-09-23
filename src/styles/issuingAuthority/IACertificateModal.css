@@ -1,0 +1,87 @@
+.iacm-modal-backdrop {
+    position: fixed;
+    max-width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .iacm-modal-overlay {
+    position: relative; 
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+    height: 600px;
+    overflow-y: auto;
+    display: flex; 
+    flex-direction: column; 
+  }
+  
+  .iacm-modal-content {
+    position: relative;
+  }
+  
+  .iacm-close-btn {
+    margin-left: auto;
+    font-size: 3rem;
+    cursor: pointer;
+    z-index: 1;
+    margin-top: -30px;
+  }
+  
+  .iacm-certificate-image {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+  }
+  
+  .iacm-certificate-details {
+    padding: 10px;
+  }
+  
+  .iacm-certificate-details h3 {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+  }
+  
+  .iacm-certificate-details p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .iacm-certificate-details strong {
+    min-width: 150px;
+    margin-right: 10px;
+  }
+  
+  .iacm-field-value {
+    flex: 1;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .iacm-access-log-dropdown {
+    width: 100%;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .iacm-modal-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .iacm-btn {
+    margin-left: 10px;
+    border-radius: 30px;
+  }
+  

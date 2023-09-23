@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/navbar/Navbar.css";
-
+import { MetaMaskButton } from "@metamask/sdk-react-ui";
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
@@ -36,6 +36,8 @@ function Navbar() {
           </ul>
         </div>
       </div>
+
+      {/* <MetaMaskButton theme={"light"} color="white"></MetaMaskButton> */}
     </nav>
   );
 }
