@@ -1,6 +1,6 @@
 .user-details-container {
   /* background-color: antiquewhite; */
-  width: 80%;
+  /* width: 80%; */
   margin: auto;
   margin-top: 80px;
   display: flex;
@@ -15,6 +15,11 @@
   width: 100%;
   display: flex;
   justify-content: flex-start;
+  /* border: 1px solid black; */
+  margin: 30px auto;
+  padding: 30px 0px;
+  border-radius: 25px;
+  box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.03);
 }
 
 .user-details-image {
@@ -46,14 +51,44 @@
 .buttons-container {
   padding: 0;
 }
-
-.edit-profile-button {
+.edit-profile-button-div {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.edit-profile-button-div button {
   background-color: #007bff;
   border-radius: 20px;
-  padding: 5px;
+  padding: 10px 30px;
   color: white;
   border: none;
   cursor: pointer;
-  margin-top: -40px;
-  width: 120px;
+  /* margin-top: -40px; */
+  /* width: 120px; */
+}
+
+.dashboard-navbar {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.dashboard-navbar-link {
+  /* background-color: #41246d; */
+  color: #000;
+  font-size: 15px;
+  line-height: 1.1;
+  padding: 16px 28px;
+  font-weight: 700;
+  border-radius: 25px;
+}
+.dashboard-navbar-link:hover {
+  background-color: #41246d;
+  color: #ffffff;
+}
+.dashboard-navbar-link.active {
+  background-color: #41246d;
+  color: #ffffff;
 }

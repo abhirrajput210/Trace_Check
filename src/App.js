@@ -14,24 +14,10 @@ import IARegistrationPage from "./pages/IARegistrationPage";
 import UserDashboard from "./pages/UserDashboard";
 import AddCertificate from "./components/userDashboard/AddCertificate";
 import { useEffect } from "react";
-import { useSDK } from "@metamask/sdk-react";
+
 import IADashboard from "./pages/IADashboard";
 
 function App() {
-  const { sdk, connected, connecting, provider, chainId } = useSDK();
-  useEffect(() => {
-    const chainChange = async () => {
-      await window.ethereum.request({
-        method: "wallet_switchEthereumChain",
-        params: [
-          {
-            chainId: "0x64",
-          },
-        ],
-      });
-    };
-    console.log(connected);
-  }, [chainId, connected]);
   return (
     <Router>
       <Navbar />

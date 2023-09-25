@@ -31,7 +31,7 @@ function UserDashboard(props) {
 
   return (
     <>
-      <div className="container-fluid  user-details-container">
+      <div className="container  user-details-container">
         <div className=" user-details">
           <div className="col-4 col-md-5 d-flex flex-column align-items-center user-details-image">
             <div className="rounded-circle overflow-hidden mb-2 border border-secondary">
@@ -41,10 +41,6 @@ function UserDashboard(props) {
                 className=" object-fit-cover"
               />
             </div>
-
-            <div>
-              <button className="edit-profile-button">Edit Profile</button>
-            </div>
           </div>
 
           <div className="col-8 col-md-5 user-details-info">
@@ -53,14 +49,17 @@ function UserDashboard(props) {
             {/* <h6>{user.id}</h6> */}
             <p>login to get wallet address</p>
           </div>
+          <div className="edit-profile-button-div">
+            <button>Edit Profile</button>
+          </div>
         </div>
       </div>
 
       <div className="container">
-        <ul className="nav nav-tabs">
-          <li className="nav-item">
+        <ul className="dashboard-navbar">
+          <li className="dashboard-navbar-item">
             <button
-              className={`nav-link ${
+              className={`dashboard-navbar-link ${
                 displaySection === "certificates" ? "active" : ""
               }`}
               onClick={() => handleSectionToggle("certificates")}
@@ -68,9 +67,9 @@ function UserDashboard(props) {
               My Certificates
             </button>
           </li>
-          <li className="nav-item">
+          <li className="dashboard-navbar-item">
             <button
-              className={`nav-link ${
+              className={`dashboard-navbar-link ${
                 displaySection === "requests" ? "active" : ""
               }`}
               onClick={() => handleSectionToggle("requests")}

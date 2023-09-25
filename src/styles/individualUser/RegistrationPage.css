@@ -1,147 +1,146 @@
-.user-register-main-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
+.user-register-main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
 }
 
 .user-register-registration-container {
-    width: 60vh;
-    height: 75vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px; 
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    background-color:#ffffff; 
-    position: relative; 
-    background-image: url('../../assets/educator.png'); 
-    background-repeat: no-repeat;
-    background-position: right bottom;
-    background-size: 30%;
-  }
+  width: 60vh;
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  background-color: #ffffff;
+  position: relative;
+  background-image: url("../../assets/educator.png");
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: 30%;
+}
 
-  .user-register-registration-header {
-    background-color: #41246D;
-    color: white;
-    text-align: center;
-    border-radius: 20px;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .user-register-registration-title {
-    font-size: 24px;
-    font-weight: bold;
-    width: 320px;
-  }
-  
-  .user-register-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .user-register-form-group {
-    margin-bottom: 15px;
-  }
-  
-  .user-register-form input[type="text"],
-  .user-register-form input[type="email"]{
-    width: 50vh;
-    padding: 15px;
-    font-family: "Poppins", sans-serif;
-    border: none;
-    border-radius: 20px;
-    font-size: 15px;
-    outline: none;
-    background-color: #f8f8f8; 
-    margin-bottom: 15px;
-  }
+.user-register-registration-header {
+  background-color: #41246d;
+  color: white;
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 50px;
+}
 
-  .user-register-form select {
-    width: 50vh;
-    padding: 15px;
-    font-family: "Poppins", sans-serif;
-    border: none;
-    border-radius: 20px;
-    font-size: 15px;
-    outline: none;
-    background-color: #f8f8f8; 
-    margin-bottom: 15px;
-    color: #888;
-  }
+.user-register-registration-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
 
-  .user-register-form input[type="file"] {
-    position: relative;
-    margin-left: 5px;
-    margin-bottom: 15px;
-  }
-  
-  .user-register-form input[type="file"]::file-selector-button {
-    width: 145px;
-    font-family: "Poppins", sans-serif;
-    color: transparent;
-  }
-  
-  .user-register-form input[type="file"]::before {
-    position: absolute;
-    pointer-events: none;
-    top: 10px;
-    left: 16px;
-    height: 20px;
-    width: 20px;
-    content: "";
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230964B0'%3E%3Cpath d='M18 15v3H6v-3H4v3c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-3h-2zM7 9l1.41 1.41L11 7.83V16h2V7.83l2.59 2.58L17 9l-5-5-5 5z'/%3E%3C/svg%3E");
-  }
-  
-  .user-register-form input[type="file"]::after {
-    position: absolute;
-    pointer-events: none;
-    top: 8px;
-    left: 40px;
-    color: #0964b0;
-    content: "Upload Logo";
-    font-family: "Poppins", sans-serif;
-  }
+.user-register-form {
+  display: flex;
+  flex-direction: column;
+}
 
-  .user-register-form input[type="file"]::file-selector-button {
-    border-radius: 4px;
-    padding: 0 16px;
-    height: 40px;
-    cursor: pointer;
-    background-color: white;
-    border: 1px solid rgba(0, 0, 0, 0.16);
-    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
-    margin-right: 16px;
-    transition: background-color 200ms;
-  }
-  
-  .user-register-form input[type="file"]::file-selector-button:hover {
-    background-color: #f3f4f6;
-  }
-  
-  .user-register-form input[type="file"]::file-selector-button:active {
-    background-color: #e5e7eb;
-  }
-  
-  .user-register-form input[type="text"]::placeholder,
-  .user-register-form input[type="email"]::placeholder{
-   color: #888;
-}  
+.user-register-form-group {
+  margin-bottom: 15px;
+}
+
+.user-register-form input[type="text"],
+.user-register-form input[type="email"] {
+  width: 50vh;
+  padding: 15px;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  border-radius: 20px;
+  font-size: 15px;
+  outline: none;
+  background-color: #f8f8f8;
+  margin-bottom: 15px;
+}
+
+.user-register-form select {
+  width: 50vh;
+  padding: 15px;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  border-radius: 20px;
+  font-size: 15px;
+  outline: none;
+  background-color: #f8f8f8;
+  margin-bottom: 15px;
+  color: #888;
+}
+
+.user-register-form input[type="file"] {
+  position: relative;
+  margin-left: 5px;
+  margin-bottom: 15px;
+}
+
+.user-register-form input[type="file"]::file-selector-button {
+  width: 145px;
+  font-family: "Poppins", sans-serif;
+  color: transparent;
+}
+
+.user-register-form input[type="file"]::before {
+  position: absolute;
+  pointer-events: none;
+  top: 10px;
+  left: 16px;
+  height: 20px;
+  width: 20px;
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230964B0'%3E%3Cpath d='M18 15v3H6v-3H4v3c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-3h-2zM7 9l1.41 1.41L11 7.83V16h2V7.83l2.59 2.58L17 9l-5-5-5 5z'/%3E%3C/svg%3E");
+}
+
+.user-register-form input[type="file"]::after {
+  position: absolute;
+  pointer-events: none;
+  top: 8px;
+  left: 40px;
+  color: #0964b0;
+  content: "Upload Logo";
+  font-family: "Poppins", sans-serif;
+}
+
+.user-register-form input[type="file"]::file-selector-button {
+  border-radius: 4px;
+  padding: 0 16px;
+  height: 40px;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+  margin-right: 16px;
+  transition: background-color 200ms;
+}
+
+.user-register-form input[type="file"]::file-selector-button:hover {
+  background-color: #f3f4f6;
+}
+
+.user-register-form input[type="file"]::file-selector-button:active {
+  background-color: #e5e7eb;
+}
+
+.user-register-form input[type="text"]::placeholder,
+.user-register-form input[type="email"]::placeholder {
+  color: #888;
+}
 .user-register-button {
-    background-color: #F24080;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 20px; 
-    font-size: 15px;
-    font-family:"Mulish", sans-serif;
-    cursor: pointer;
-    transition: all 0.6s;
-  }
-  
-  .user-register-button:hover {
-    background-color: #a62464; 
-  }
-  
+  background-color: #f24080;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 20px;
+  font-size: 15px;
+  font-family: "Mulish", sans-serif;
+  cursor: pointer;
+  transition: all 0.6s;
+}
+
+.user-register-button:hover {
+  background-color: #a62464;
+}

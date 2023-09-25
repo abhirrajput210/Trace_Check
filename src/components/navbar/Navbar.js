@@ -1,6 +1,7 @@
 import React from "react";
 import "../../styles/navbar/Navbar.css";
-import { MetaMaskButton } from "@metamask/sdk-react-ui";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
@@ -26,12 +27,7 @@ function Navbar() {
               </a>
             </li>
             <li className="nav-item">
-              <a
-                href="/connect-wallet"
-                className="btn btn-secondary connect-wallet-button d-flex align-items-center justify-content-center"
-              >
-                Connect Wallet
-              </a>
+              <ConnectButton />
             </li>
           </ul>
         </div>
