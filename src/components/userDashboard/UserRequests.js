@@ -51,7 +51,7 @@ function UserRequests() {
         </div>
       </div>
 
-      <div className="requests-table">
+      {/* <div className="requests-table">
         <div className="requests-header">
           <div className="header-item">Sr. Number</div>
           <div className="header-item">Certificate Title</div>
@@ -72,7 +72,45 @@ function UserRequests() {
             <div className="row-item">{request.status}</div>
           </div>
         ))}
-      </div>
+      </div> */}
+      <table className=" table">
+        <thead>
+          <tr>
+            <th>Sr. Number</th>
+            <th className="header-item" scope="col">
+              Certificate Title
+            </th>
+            <th className="header-item" scope="col">
+              Issuing Authority Name
+            </th>
+            <th className="header-item" scope="col">
+              Issuing Authority Email
+            </th>
+            <th className="header-item" scope="col">
+              Request Date
+            </th>
+            <th className="header-item" scope="col">
+              Request Type
+            </th>
+            <th className="header-item" scope="col">
+              Status
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredRequests.map((request, index) => (
+            <tr key={request.id} className="request-row">
+              <td className="row-item">{index + 1}</td>
+              <td className="row-item">{request.title}</td>
+              <td className="row-item">{request.issuingAuthority}</td>
+              <td className="row-item">{request.issuingAuthorityEmail}</td>
+              <td className="row-item">{request.requestDate}</td>
+              <td className="row-item">{request.requestType}</td>
+              <td className="row-item">{request.status}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

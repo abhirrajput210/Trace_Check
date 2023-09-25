@@ -11,7 +11,7 @@ function Navbar() {
         </a>
         <div className="d-flex align-items-center justify-content-center">
           <ul className="navbar-nav d-flex align-items-center justify-content-center">
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <a className="nav-link" href="/">
                 HOME
               </a>
@@ -25,7 +25,7 @@ function Navbar() {
               <a className="nav-link" href="/contact">
                 CONTACT
               </a>
-            </li>
+            </li> */}
             <li className="nav-item">
               <ConnectButton />
             </li>

@@ -73,11 +73,15 @@
   align-items: center;
   flex-direction: row;
   gap: 10px;
+  list-style-type: none;
 }
-
+.dashboard-navbar-item {
+  list-style-type: none;
+}
 .dashboard-navbar-link {
-  /* background-color: #41246d; */
+  background-color: white;
   color: #000;
+  border: 1px solid white;
   font-size: 15px;
   line-height: 1.1;
   padding: 16px 28px;
@@ -86,6 +90,7 @@
 }
 .dashboard-navbar-link:hover {
   background-color: #41246d;
+  border: 1px solid #41246d;
   color: #ffffff;
 }
 .dashboard-navbar-link.active {
