@@ -29,6 +29,16 @@ function IssueCertificate() {
       type: "Academic",
       certificateTime: "2022-2023",
     },
+    {
+      id: 3,
+      title: "Graduation Certificate",
+      image: certificateImage2,
+      issueDate: "2023-08-15",
+      userId: "Alice165",
+      userName: "Alice",
+      type: "Academic",
+      certificateTime: "2022-2023",
+    },
   ];
 
   const [modalOpen, setModalOpen] = useState(false);

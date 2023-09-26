@@ -37,7 +37,7 @@ function TrackAlumni() {
   });
 
   return (
-    <div>
+    <div className="container">
       <div className="search-filters">
         <div className="search-filter">
           <input

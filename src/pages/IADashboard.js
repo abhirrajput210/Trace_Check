@@ -28,30 +28,26 @@ function IADashboard() {
 
   return (
     <>
-      <div className="container-fluid  IA-details-container">
+      <div className="container IA-details-container">
         <div className="IA-details">
-          <div className="col-12 col-md-6 d-flex flex-column align-items-center user-details-image">
-            <div
-              className="rounded-circle overflow-hidden mb-2 border border-secondary"
-              style={{ width: "140px", height: "140px" }}
-            >
+          <div className="col-4 col-md-5 d-flex flex-column align-items-center user-details-image">
+            <div className="rounded-circle overflow-hidden mb-2 border border-secondary">
               <img
                 src={logo}
                 alt="User Profile"
-                className="w-100 h-100 object-fit-cover"
+                className=" object-fit-cover"
               />
-            </div>
-
-            <div>
-              <button className="IA-edit-profile-button">Edit Profile</button>
             </div>
           </div>
 
-          <div className="col-12 col-md-6">
-            <h1>Issuing Authority Name</h1>
+          <div className="col-8 col-md-5 user-details-info">
+            <h1>User Name</h1>
             <h5>login to get email address</h5>
             {/* <h6>{user.id}</h6> */}
             <p>login to get wallet address</p>
+          </div>
+          <div className="edit-profile-button-div">
+            <button>Edit Profile</button>
           </div>
         </div>
       </div>

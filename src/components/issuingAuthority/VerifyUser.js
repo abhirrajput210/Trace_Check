@@ -49,7 +49,7 @@ function VerifyUser() {
   });
 
   return (
-    <div>
+    <div className="container">
       <div className="vu-search-filters">
         <div className="vu-search-filter">
           <input

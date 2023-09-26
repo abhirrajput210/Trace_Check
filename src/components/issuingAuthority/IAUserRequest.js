@@ -20,7 +20,7 @@ function IAUserRequest() {
     },
   ];
   return (
-    <div className="ia-user-requests-container">
+    <div className="container ia-user-requests-container">
       <table className="table border ">
         <thead>
           <tr>
