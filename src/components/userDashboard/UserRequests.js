@@ -30,7 +30,7 @@ function UserRequests() {
     : requestsData;
 
   return (
-    <div className="user-requests">
+    <div className="user-requests container ">
       <div className="requests-main-header">
         <div className="request-type-filter">
           <select
@@ -73,44 +73,49 @@ function UserRequests() {
           </div>
         ))}
       </div> */}
-      <table className=" table">
-        <thead>
-          <tr>
-            <th>Sr. Number</th>
-            <th className="header-item" scope="col">
-              Certificate Title
-            </th>
-            <th className="header-item" scope="col">
-              Issuing Authority Name
-            </th>
-            <th className="header-item" scope="col">
-              Issuing Authority Email
-            </th>
-            <th className="header-item" scope="col">
-              Request Date
-            </th>
-            <th className="header-item" scope="col">
-              Request Type
-            </th>
-            <th className="header-item" scope="col">
-              Status
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredRequests.map((request, index) => (
-            <tr key={request.id} className="request-row">
-              <td className="row-item">{index + 1}</td>
-              <td className="row-item">{request.title}</td>
-              <td className="row-item">{request.issuingAuthority}</td>
-              <td className="row-item">{request.issuingAuthorityEmail}</td>
-              <td className="row-item">{request.requestDate}</td>
-              <td className="row-item">{request.requestType}</td>
-              <td className="row-item">{request.status}</td>
+      <div>
+        <table className="table border ">
+          <thead>
+            <tr>
+              <th className="header-item" scope="col">
+                Sr. Number
+              </th>
+              <th className="header-item" scope="col">
+                Certificate Title
+              </th>
+              <th className="header-item" scope="col">
+                Issuing Authority Name
+              </th>
+              <th className="header-item" scope="col">
+                Issuing Authority Email
+              </th>
+              <th className="header-item" scope="col">
+                Request Date
+              </th>
+              <th className="header-item" scope="col">
+                Request Type
+              </th>
+              <th className="header-item" scope="col">
+                Status
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filteredRequests.length > 0 &&
+              filteredRequests.map((request, index) => (
+                <tr key={request.id}>
+                  <td>{index + 1}</td>
+                  <td>{request.title}</td>
+                  <td>{request.issuingAuthority}</td>
+                  <td>{request.issuingAuthorityEmail}</td>
+                  <td>{request.requestDate}</td>
+                  <td>{request.requestType}</td>
+                  <td>{request.status}</td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

@@ -21,52 +21,54 @@ function IAUserRequest() {
   ];
   return (
     <div className="ia-user-requests-container">
-      <div className="ia-user-requests">
-        <div className="ia-user-request ia-user-request-heading">
-          <div className="ia-request-details">
-            <div className="ia-field ia-serial-number">Serial No.</div>
-            <div className="ia-field ia-user-profile-photo">User Photo</div>
-            <div className="ia-field ia-certificate-title">
+      <table className="table border ">
+        <thead>
+          <tr>
+            <th className="header-item" scope="col">
+              Sr. Number
+            </th>
+            <th className="header-item" scope="col">
+              User
+            </th>
+            <th className="header-item" scope="col">
               Certificate Title
-            </div>
-            <div className="ia-field ia-user-info-name">User Name</div>
-            <div className="ia-field ia-user-info-id">User ID</div>
-            <div className="ia-field ia-request-date">Request Date</div>
-            <div className="ia-field ia-request-type">Request Type</div>
-          </div>
-          <div>Actions</div>
-        </div>
-        {userRequests.map((request, index) => (
-          <div key={request.id} className="ia-user-request">
-            <div className="ia-request-details">
-              <div className="ia-field ia-serial-number">{index + 1}</div>
-              <div className="ia-field ia-user-profile-photo">
-                <img src={userImage} alt="User Profile" />
-              </div>
-              <div className="ia-field ia-certificate-title">
-                {request.certificateTitle}
-              </div>
-              <div className="ia-field ia-user-info-name">
-                {request.userName}
-              </div>
-              <div className="ia-field ia-user-info-id">{request.userId}</div>
-              <div className="ia-field ia-request-date">
-                {request.requestDate}
-              </div>
-              <div className="ia-field ia-request-type">
-                {request.requestType}
-              </div>
-            </div>
-            <button
-              className="ia-view-button"
-              onClick={handleViewRequestButton}
-            >
-              {" "}
-              View
-            </button>
-          </div>
-        ))}
-      </div>
+            </th>
+            <th className="header-item" scope="col">
+              User Name
+            </th>
+            <th className="header-item" scope="col">
+              User ID
+            </th>
+            <th className="header-item" scope="col">
+              Request Date
+            </th>
+            <th className="header-item" scope="col">
+              Request Type
+            </th>
+            <th className="header-item" scope="col">
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {userRequests.length > 0 &&
+            userRequests.map((request, index) => (
+              <tr key={request.id}>
+                <td>{index + 1}</td>
+                <td>
+                  <div className="ia-field ia-user-profile-photo">
+                    <img src={userImage} alt="User Profile" />
+                  </div>
+                </td>
+                <td>{request.certificateTitle}</td>
+                <td>{request.userName}</td>
+                <td>{request.userId}</td>
+                <td>{request.requestDate}</td>
+                <td>{request.requestType}</td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
     </div>
   );
 }

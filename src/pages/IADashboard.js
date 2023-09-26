@@ -57,10 +57,10 @@ function IADashboard() {
       </div>
 
       <div className="container mt-5">
-        <ul className="nav nav-tabs">
-          <li className="nav-item">
+        <ul className="dashboard-navbar">
+          <li className="dashboard-navbar-item">
             <button
-              className={`nav-link ${
+              className={`dashboard-navbar-link ${
                 displaySection === "certificates" ? "active" : ""
               }`}
               onClick={() => handleSectionToggle("certificates")}
@@ -68,9 +68,9 @@ function IADashboard() {
               Issue Certificates
             </button>
           </li>
-          <li className="nav-item">
+          <li className="dashboard-navbar-item">
             <button
-              className={`nav-link ${
+              className={`dashboard-navbar-link ${
                 displaySection === "requests" ? "active" : ""
               }`}
               onClick={() => handleSectionToggle("requests")}
@@ -78,9 +78,9 @@ function IADashboard() {
               User Requests
             </button>
           </li>
-          <li className="nav-item">
+          <li className="dashboard-navbar-item">
             <button
-              className={`nav-link ${
+              className={`dashboard-navbar-link ${
                 displaySection === "trackalumni" ? "active" : ""
               }`}
               onClick={() => handleSectionToggle("trackalumni")}
@@ -88,9 +88,9 @@ function IADashboard() {
               Track Alumni
             </button>
           </li>
-          <li className="nav-item">
+          <li className="dashboard-navbar-item">
             <button
-              className={`nav-link ${
+              className={`dashboard-navbar-link ${
                 displaySection === "verifyuser" ? "active" : ""
               }`}
               onClick={() => handleSectionToggle("verifyuser")}
