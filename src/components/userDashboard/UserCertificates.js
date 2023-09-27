@@ -89,7 +89,7 @@ function UserCertificates() {
   };
 
   const handleAddCertificateClick = () => {
-    navigate("/Add-Certificate");
+    navigate("/add-certificate");
   };
 
   return (

@@ -100,100 +100,101 @@ const AddCertificate = () => {
 
   return (
     <div className="center-form">
-      <div className="add-certificate-form">
-        <h3>Add Certificate</h3>
-        <form>
-          <div className="form-group">
-            <label htmlFor="title">
-              <FontAwesomeIcon icon={faCertificate} /> Certificate Title
-            </label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              value={certificateData.title}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="issuingAuthority">
-              <FontAwesomeIcon icon={faBuilding} /> Issuing Authority Name
-            </label>
-            <input
-              type="text"
-              id="issuingAuthority"
-              name="issuingAuthority"
-              value={certificateData.issuingAuthority}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="type">
-              <FontAwesomeIcon icon={faList} /> Certificate Type
-            </label>
-            <select
-              id="type"
-              name="type"
-              value={certificateData.type}
-              onChange={handleInputChange}
-              required
-            >
-              <option value="">Select Type</option>
-              <option value="academic">Academic</option>
-              <option value="work_experience">Work Experience</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label>Certification Time (From)</label>
-            <input
-              type="number"
-              id="fromDate"
-              name="fromDate"
-              value={certificateData.fromDate}
-              onChange={handleInputChange}
-              min="1900"
-              max="2099"
-              placeholder="To Year"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label>Certification Time (To)</label>
-            <input
-              type="number"
-              id="toDate"
-              name="toDate"
-              onChange={handleInputChange}
-              min="1900"
-              max="2099"
-              placeholder="To Year"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="certificateFile">
-              <FontAwesomeIcon icon={faUpload} /> Upload Certificate
-            </label>
-            <input
-              type="file"
-              id="certificateFile"
-              name="certificateFile"
-              onChange={handleFileChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <button
-              type="submit"
-              className="btn btn-primary"
-              onClick={handleAddCertificate}
-            >
+      <div className="add-certificate-main-container">
+        <div className="add-certificate-registration-container">
+          <form className="add-certificate-form">
+            <div className="add-certificate-registration-header">
+              <div className="add-certificate-registration-title">
+                Add Certificate
+              </div>
+            </div>
+            <div className="add-certificate-form-group">
+              <label htmlFor="title">Certificate Title</label>
+              <input
+                className="w-100"
+                type="text"
+                id="fullName"
+                name="fullName"
+                value={certificateData.title}
+                onChange={handleInputChange}
+                required
+                placeholder="Enter Full Name*"
+              />
+            </div>
+            <div className="add-certificate-form-group">
+              <label htmlFor="issuingAuthority">Issuing Authority Name</label>
+              <input
+                className="w-100"
+                type="text"
+                id="issuingAuthority"
+                name="issuingAuthority"
+                value={certificateData.issuingAuthority}
+                onChange={handleInputChange}
+                required
+                placeholder="Issuing Authority Name"
+              />
+            </div>
+            <div className="add-certificate-form-group">
+              <label htmlFor="type">Certificate Type</label>
+              <select
+                className="w-100"
+                id="type"
+                name="type"
+                value={certificateData.type}
+                onChange={handleInputChange}
+                required
+              >
+                <option value="">Select Type</option>
+                <option value="academic">Academic</option>
+                <option value="work_experience">Work Experience</option>
+              </select>
+            </div>
+            <div className="add-certificate-form-group">
+              {" "}
+              <label>Certification Time (From)</label>
+              <input
+                className="w-100"
+                type="date"
+                id="fromDate"
+                name="fromDate"
+                value={certificateData.fromDate}
+                onChange={handleInputChange}
+                min="1900"
+                max="2099"
+                placeholder="To Year"
+                required
+              />
+            </div>
+            <div className="add-certificate-form-group">
+              <label>Certification Time (To)</label>
+              <input
+                className="w-100"
+                type="date"
+                id="toDate"
+                name="toDate"
+                onChange={handleInputChange}
+                min="1900"
+                max="2099"
+                placeholder="To Year"
+                required
+              />
+            </div>
+            <div className="add-certificate-form-group">
+              <input
+                className="w-100"
+                type="file"
+                id="certificateFile"
+                name="certificateFile"
+                onChange={handleFileChange}
+                accept="application/pdf,image/*"
+                required
+              />
+            </div>
+            <button className="add-certificate-button" type="submit">
               Add Certificate
             </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );

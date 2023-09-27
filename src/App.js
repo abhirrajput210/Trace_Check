@@ -34,7 +34,7 @@ function App() {
           path="/issuing-authority/dashboard"
           element={<IADashboard />}
         />
-        <Route exact path="/Add-Certificate" element={<AddCertificate />} />
+        <Route exact path="/add-certificate" element={<AddCertificate />} />
         <Route exact path="/certificate" element={<SingleCertificate />} />
       </Routes>
     </Router>

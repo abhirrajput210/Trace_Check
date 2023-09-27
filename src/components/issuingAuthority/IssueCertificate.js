@@ -12,7 +12,7 @@ function IssueCertificate() {
     {
       id: 1,
       title: "HSC Certificate",
-      image: certificateImage2,
+      image: certificateImage,
       issueDate: "2023-08-15",
       userId: "Bob0768",
       userName: "Bob",

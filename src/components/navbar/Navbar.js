@@ -7,7 +7,7 @@ function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
       <div className="container d-flex justify-content-between align-items-center">
         <a className="navbar-brand" href="/">
-          Logo
+          The Proof
         </a>
         <div className="d-flex align-items-center justify-content-center">
           <ul className="navbar-nav d-flex align-items-center justify-content-center">
