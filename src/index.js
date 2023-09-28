@@ -3,9 +3,14 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import merge from "lodash.merge";
 
 import "@rainbow-me/rainbowkit/styles.css";
-import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import {
+  getDefaultWallets,
+  RainbowKitProvider,
+  darkTheme,
+} from "@rainbow-me/rainbowkit";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { mainnet, polygon, optimism, arbitrum, base, zora } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
@@ -20,17 +25,23 @@ const { connectors } = getDefaultWallets({
   projectId: "YOUR_PROJECT_ID",
   chains,
 });
+const myTheme = merge(darkTheme(), {
+  colors: {
+    accentColor: "#f24080",
+  },
+});
 const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
   publicClient,
 });
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
     <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
+      <RainbowKitProvider chains={chains} theme={myTheme}>
         <App />
       </RainbowKitProvider>
     </WagmiConfig>

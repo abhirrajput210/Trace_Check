@@ -27,7 +27,16 @@ function Navbar() {
               </a>
             </li> */}
             <li className="nav-item">
-              <ConnectButton />
+              <ConnectButton
+                accountStatus={{
+                  smallScreen: "avatar",
+                  largeScreen: "full",
+                }}
+                showBalance={{
+                  smallScreen: false,
+                  largeScreen: true,
+                }}
+              />
             </li>
           </ul>
         </div>

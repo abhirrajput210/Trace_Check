@@ -27,3 +27,12 @@
 .card-container {
   margin-top: 5%;
 }
+
+.add-certificate {
+  background-color: #f24080;
+  color: white;
+}
+.add-certificate:hover {
+  background-color: #f24080;
+  color: white;
+}

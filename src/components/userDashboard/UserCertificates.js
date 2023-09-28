@@ -97,7 +97,7 @@ function UserCertificates() {
       <div className="row">
         <div className="col-12 d-flex justify-content-end mb-4">
           <button
-            className="btn btn-primary"
+            className="btn add-certificate"
             onClick={handleAddCertificateClick}
           >
             + Add Certificate
