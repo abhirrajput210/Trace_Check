@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import {Web3Storage} from "web3.storage"
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Web3Storage } from "web3.storage";
 
-
-import '../../styles/issuingAuthorityDashboard/IssueCertificateForm.css';
+import "../../styles/issuingAuthority/IssueCertificateForm.css";
 
 function IssueCertificateForm() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    userId: '',
-    fullName: '',
-    issuingAuthority: 'Sample Authority',
-    certificateType: '',
-    certificateTitle: '',
-    certificationTimeFrom: '',
-    certificationTimeTo: '',
+    userId: "",
+    fullName: "",
+    issuingAuthority: "Sample Authority",
+    certificateType: "",
+    certificateTitle: "",
+    certificationTimeFrom: "",
+    certificationTimeTo: "",
     uploadCertificate: null,
   });
 
@@ -25,9 +24,9 @@ function IssueCertificateForm() {
       [name]: value,
     }));
   };
+
   const client = new Web3Storage({
-    token:
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweGRDOGI5MDZiNUIyMjJFM2Y4MTUzRTI1OEE3OEFGNzZCQkU2NDdGYzgiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2Nzg4NjMwMDQ2MzcsIm5hbWUiOiJkZW1vYWJjIn0.2L8rKiCD-eVUwuxz1AFXy6fy5Foh71QZQLZXe5QedcU",
+    token: "your_web3_storage_token_here",
   });
 
   const handleFileChange = (e) => {
@@ -37,9 +36,9 @@ function IssueCertificateForm() {
       uploadCertificate: file,
     }));
   };
+
   const certiUpload = async () => {
-   
-    console.log('uploading...')
+    console.log("uploading...");
     const fileInput = document.querySelector('input[type="file"]');
     const rootCid = await client.put(fileInput.files, {
       name: "logo_image",
@@ -51,125 +50,132 @@ function IssueCertificateForm() {
     for (const file of files) {
       console.log(`${file.cid}`);
     }
-
-   
   };
-  const handleIssueCertificate = async(e) => {
+
+  const handleIssueCertificate = async (e) => {
     e.preventDefault();
     certiUpload();
-    await navigate('/Issue-Certificate');
+    await navigate("/Issue-Certificate");
   };
 
   return (
-    <div className="container mt-5 ">
-      <div className="row">
-        <div className="col-md-12 offset-md-.5">
-        <div className="form-container p-4 card">
-            <h2 className="form-heading">Issue Certificate</h2>
-          <form onSubmit={handleIssueCertificate}>
-            <div className="form-group">
-              <label>User ID</label>
-              <input
-                type="text"
-                className="form-control"
-                name="userId"
-                value={formData.userId}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label>User's Full Name</label>
-              <input
-                type="text"
-                className="form-control"
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label>Issuing Authority Name</label>
-              <input
-                type="text"
-                className="form-control"
-                name="issuingAuthority"
-                value={formData.issuingAuthority}
-                onChange={handleInputChange}
-                disabled
-              />
-            </div>
-            <div className="form-group">
-              <label>Certificate Type</label>
-              <select
-                className="form-control"
-                name="certificateType"
-                value={formData.certificateType}
-                onChange={handleInputChange}
-                required
-              >
-                <option value="">Select Certificate Type</option>
-                <option value="Academic">Academic</option>
-                <option value="Professional">Professional</option>
-              </select>
-            </div>
-            <div className="form-group">
-              <label>Certificate Title</label>
-              <input
-                type="text"
-                className="form-control"
-                name="certificateTitle"
-                value={formData.certificateTitle}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label>Certification Time (From)</label>
-              <input
-              type="number"
-              id="certificateTimeTo"
-              name="certificateTimeTo"
-              onChange={handleInputChange}
-              min="1900"
-              max="2099"
-              placeholder="To Year"
-              required
-            />
-            </div>
-            <div className="form-group">
-              <label>Certification Time (To)</label>
-              <input
-              type="number"
-              id="certificateTimeTo"
-              name="certificateTimeTo"
-              onChange={handleInputChange}
-              min="1900"
-              max="2099"
-              placeholder="To Year"
-              required
-            />
-            </div>
-            <div className="form-group">
-              <label>Upload Certificate</label>
-              <input
-                type="file"
-                className="form-control-file"
-                name="uploadCertificate"
-                onChange={handleFileChange}
-                required
-              />
-            </div>
-            <button type="submit" className="btn btn-primary">
-                Issue Certificate
-              </button>
-          </form>
-          </div>
+    <div className="issue-certificate-main-container">
+      <div className="issue-certificate-registration-container">
+        <div className="issue-certificate-registration-header">
+          <h2 className="issue-certificate-registration-title">
+            Issue Certificate
+          </h2>
         </div>
+        <form
+          className="issue-certificate-form"
+          onSubmit={handleIssueCertificate}
+        >
+          <div className="issue-certificate-form-group">
+            <label>User ID:</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter User ID"
+              name="userId"
+              value={formData.userId}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div className="issue-certificate-form-group">
+            <label>User's Full Name:</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter Full Name"
+              name="fullName"
+              value={formData.fullName}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div className="issue-certificate-form-group">
+            <label>Issuing Authority Name:</label>
+            <input
+              type="text"
+              className="form-control"
+              name="issuingAuthority"
+              value={formData.issuingAuthority}
+              onChange={handleInputChange}
+              disabled
+            />
+          </div>
+          <div className="issue-certificate-form-group">
+            <label>Certificate Type:</label>
+            <select
+              className="form-control"
+              name="certificateType"
+              value={formData.certificateType}
+              onChange={handleInputChange}
+              required
+            >
+              <option value="">Select Certificate Type</option>
+              <option value="Academic">Academic</option>
+              <option value="Professional">Professional</option>
+            </select>
+          </div>
+          <div className="issue-certificate-form-group">
+            <label>Certificate Title:</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter Certificate Title"
+              name="certificateTitle"
+              value={formData.certificateTitle}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+
+          <div className="issue-certificate-form-group">
+            {" "}
+            <label>Certification Time (From):</label>
+            <input
+              className="w-100"
+              type="date"
+              id="fromDate"
+              name="fromDate"
+              onChange={handleInputChange}
+              min="1900"
+              max="2099"
+              placeholder="To Year"
+              required
+            />
+          </div>
+          <div className="issue-certificate-form-group">
+            <label>Certification Time (To):</label>
+            <input
+              className="w-100"
+              type="date"
+              id="toDate"
+              name="toDate"
+              onChange={handleInputChange}
+              min="1900"
+              max="2099"
+              placeholder="To Year"
+              required
+            />
+          </div>
+          <div className="issue-certificate-form-group">
+            <input
+              type="file"
+              className="form-control-file"
+              name="uploadCertificate"
+              onChange={handleFileChange}
+              required
+            />
+          </div>
+          <button type="submit" className="issue-certificate-button">
+            Issue Certificate
+          </button>
+        </form>
       </div>
     </div>
-    
   );
 }
 

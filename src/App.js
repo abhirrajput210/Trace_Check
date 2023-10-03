@@ -16,6 +16,8 @@ import AddCertificate from "./components/userDashboard/AddCertificate";
 import { useEffect } from "react";
 
 import IADashboard from "./pages/IADashboard";
+import RequestCertificate from "./components/userDashboard/RequestCertificate";
+import IssueCertificateForm from "./components/issuingAuthority/IssueCertificateForm";
 
 function App() {
   return (
@@ -36,6 +38,14 @@ function App() {
         />
         <Route exact path="/add-certificate" element={<AddCertificate />} />
         <Route exact path="/certificate" element={<SingleCertificate />} />
+        <Route
+          path="/Request-Certificate"
+          element={<RequestCertificate />}
+        />{" "}
+        <Route
+          path="/Issue-Certificate-Form"
+          element={<IssueCertificateForm />}
+        />
       </Routes>
     </Router>
   );
