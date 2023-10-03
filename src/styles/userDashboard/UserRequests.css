@@ -3,6 +3,8 @@
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
+  box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.03);
+  padding: 30px 20px;
 }
 
 .requests-main-header {
@@ -79,4 +81,9 @@
 .request-row-content {
   display: flex;
   flex: 1;
+}
+
+.user-requests table td,
+.user-requests table th {
+  padding: 15px 10px;
 }

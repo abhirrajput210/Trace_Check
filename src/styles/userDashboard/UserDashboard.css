@@ -1,13 +1,13 @@
 .user-details-container {
   /* background-color: antiquewhite; */
   /* width: 80%; */
-  margin: auto;
+  /* margin: auto; */
   margin-top: 80px;
-  display: flex;
+  /* display: flex;
   justify-content: center;
   align-items: center;
   min-height: 300px;
-  padding: 20px 3%;
+  padding: 20px 3%; */
 }
 
 .user-details {

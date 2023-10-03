@@ -1,8 +1,7 @@
 .ia-user-requests-container {
-  margin: 20px;
-  width: 80%;
-  margin: auto;
   margin-top: 50px;
+  box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.03);
+  padding: 30px 20px;
 }
 
 .ia-user-requests {

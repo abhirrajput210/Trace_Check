@@ -51,28 +51,6 @@ function UserRequests() {
         </div>
       </div>
 
-      {/* <div className="requests-table">
-        <div className="requests-header">
-          <div className="header-item">Sr. Number</div>
-          <div className="header-item">Certificate Title</div>
-          <div className="header-item">Issuing Authority Name</div>
-          <div className="header-item">Issuing Authority Email</div>
-          <div className="header-item">Request Date</div>
-          <div className="header-item">Request Type</div>
-          <div className="header-item">Status</div>
-        </div>
-        {filteredRequests.map((request, index) => (
-          <div key={request.id} className="request-row">
-            <div className="row-item">{index + 1}</div>
-            <div className="row-item">{request.title}</div>
-            <div className="row-item">{request.issuingAuthority}</div>
-            <div className="row-item">{request.issuingAuthorityEmail}</div>
-            <div className="row-item">{request.requestDate}</div>
-            <div className="row-item">{request.requestType}</div>
-            <div className="row-item">{request.status}</div>
-          </div>
-        ))}
-      </div> */}
       <div>
         <table className="table border ">
           <thead>
