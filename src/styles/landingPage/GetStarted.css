@@ -1,52 +1,63 @@
 /* GetStarted.css */
 
-  .container2{
-    background:#fefdfd;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
-  .row{width: 100%;}
-  
-  /* Add responsive styles for small screens */
-  @media (max-width: 767px) {
-    .section {
-      margin: 10px;
-      padding: 10px;
-    }
-  }
-  .maindiv{
-    background: #fefdfd;
-  
-  }
+.container2 {
+  background: #fefdfd;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.row {
+  width: 100%;
+}
 
+/* Add responsive styles for small screens */
+@media (max-width: 767px) {
+  .section {
+    margin: 10px;
+    padding: 10px;
+  }
+}
+.maindiv {
+  background: #fefdfd;
+}
 
 .maindiv {
-    background-color:#fefdfd56; 
-  
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .img1{border-radius: 40px; /* Add rounded corners to the main div */
-    padding: 20px;
-max-width: 100%; }
-.img2{border-radius: 40px; /* Add rounded corners to the main div */
-    padding: 20px;
-max-width: 100%; }
+  background-color: #fefdfd56;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.img_parent {
+  width: 90%;
+  height: 500px;
+}
+.img1 {
+  border-radius: 40px; /* Add rounded corners to the main div */
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.img2 {
+  border-radius: 40px; /* Add rounded corners to the main div */
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-  .maindiv2{
-    background-color:#fefdfd56;
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .container2 {
-    background-color: #f9f9f9; 
-    padding: 40px; 
-    border-radius: 10px; }
-  
- 
+.maindiv2 {
+  background-color: #fefdfd56;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.container2 {
+  background-color: #f9f9f9;
+  padding: 40px;
+  border-radius: 10px;
+}

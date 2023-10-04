@@ -14,11 +14,41 @@ import {
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { mainnet, polygon, optimism, arbitrum, base, zora } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
-import { publicProvider } from "wagmi/providers/public";
+// import { publicProvider } from "wagmi/providers/public";
+import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
+
+const BTTChain = {
+  id: 1029,
+  name: "BitTorrent Chain Donau",
+  network: "BitTorrent Chain Donau",
+  iconUrl: "https://testscan.bt.io/static/media/BTT.e13a6c4e.svg",
+  iconBackground: "#fff",
+  nativeCurrency: {
+    decimals: 18,
+    name: "BitTorrent Chain Donau",
+    symbol: "BTT",
+  },
+  rpcUrls: {
+    default: "https://testrpc.bittorrentchain.io/",
+  },
+  blockExplorers: {
+    default: {
+      name: "BitTorrent Chain Donau",
+      url: "https://testscan.bt.io",
+    },
+  },
+  testnet: true,
+};
 
 const { chains, publicClient } = configureChains(
-  [mainnet, polygon, optimism, arbitrum, base, zora],
-  [alchemyProvider({ apiKey: process.env.ALCHEMY_ID }), publicProvider()]
+  [BTTChain, polygon],
+  [
+    jsonRpcProvider({
+      rpc: (chain) => ({ http: "https://pre-rpc.bittorrentchain.io/" }),
+    }),
+    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
+    // publicProvider(),
+  ]
 );
 const { connectors } = getDefaultWallets({
   appName: "My RainbowKit App",

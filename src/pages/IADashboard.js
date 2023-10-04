@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import IssueCertificate from "../components/issuingAuthority/IssueCertificate";
 import TrackAlumni from "../components/issuingAuthority/TrackAlumni";
@@ -6,8 +6,12 @@ import IAUserRequest from "../components/issuingAuthority/IAUserRequest";
 import VerifyUser from "../components/issuingAuthority/VerifyUser";
 import "../styles/issuingAuthority/IADashboard.css";
 import logo from "../assets/dummy-user.png";
+import { contractInstance } from "../components/ContractInstance";
+import { useAccount } from "wagmi";
 
 function IADashboard() {
+  const { address } = useAccount();
+  const [userData, setUserData] = useState("");
   const [displaySection, setDisplaySection] = useState("certificates");
 
   const handleSectionToggle = (section) => {
@@ -25,7 +29,35 @@ function IADashboard() {
       return <VerifyUser />;
     }
   };
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const contract = await contractInstance();
 
+        const data = await contract.getAuthority(address);
+        console.log(data);
+        if (data) {
+          const url = "https://ipfs.io/ipfs/" + data.profileImage;
+          setUserData({
+            email: data.email,
+            profileCID: url,
+            orgName: data.orgName,
+            type:
+              data.orgType === 0 ? "Educational Institute" : "Corporate Office",
+            country: data.country,
+          });
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    if (address) {
+      fetchProfile();
+    }
+    return () => {
+      setUserData("");
+    };
+  }, [address]);
   return (
     <>
       <div className="container IA-details-container">
@@ -33,7 +65,7 @@ function IADashboard() {
           <div className="col-4 col-md-5 d-flex flex-column align-items-center user-details-image">
             <div className="rounded-circle overflow-hidden mb-2 border border-secondary">
               <img
-                src={logo}
+                src={userData.profileCID ? userData.profileCID : ""}
                 alt="User Profile"
                 className=" object-fit-cover"
               />
@@ -41,10 +73,10 @@ function IADashboard() {
           </div>
 
           <div className="col-8 col-md-5 user-details-info">
-            <h1>User Name</h1>
-            <h5>login to get email address</h5>
+            <h1>{userData && userData.orgName}</h1>
+            <h5>{userData && userData.email}</h5>
             {/* <h6>{user.id}</h6> */}
-            <p>login to get wallet address</p>
+            <p>{address ? address : ""}</p>
           </div>
           <div className="edit-profile-button-div">
             <button>Edit Profile</button>

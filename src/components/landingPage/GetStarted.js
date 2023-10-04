@@ -8,11 +8,13 @@ function App() {
     <div className="container2">
       <div className="row">
         <div className="col-md-6 mb-4 maindiv">
-          <img
-            className="img2"
-            src="https://demo.bosathemes.com/html/educator/assets/img/educator-img12-500px.jpg"
-            alt="Random"
-          />
+          <div className="img_parent">
+            <img
+              className="img2"
+              src="https://demo.bosathemes.com/html/educator/assets/img/educator-img13.jpg"
+              alt="Random"
+            />
+          </div>
           <h3>Individual User </h3>
           <h6>Click here to register yourself as an Individual User</h6>
           <br></br>
@@ -24,6 +26,13 @@ function App() {
         </div>
 
         <div className="col-md-6 mb-4 maindiv2">
+          <div className="img_parent">
+            <img
+              className="img1"
+              src="https://demo.bosathemes.com/html/educator/assets/img/educator-img12-500px.jpg"
+              alt="Random"
+            />
+          </div>
           <h3>Issuing Authority</h3>
 
           <h6>Click here to register yourself as an Issuing Authority</h6>
@@ -39,11 +48,6 @@ function App() {
           </div>
           <br></br>
 
-          <img
-            className="img1"
-            src="https://demo.bosathemes.com/html/educator/assets/img/educator-img13.jpg"
-            alt="Random Image"
-          />
           <i aria-hidden="true" className="icon icon-medal1"></i>
         </div>
       </div>

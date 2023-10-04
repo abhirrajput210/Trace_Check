@@ -12,7 +12,7 @@ function App() {
     <>
       <section className="home-banner">
         <div className="container">
-          <div className="row pt-5">
+          <div className="row pt-5 justify-content-center align-items-center">
             {/* Left Banner Content */}
             <div className=" col-md-6 banner-left  h-100">
               <div className="image-overlay pattern-overlay"></div>

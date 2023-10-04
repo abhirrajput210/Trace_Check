@@ -1,19 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import UserCertificates from "../components/userDashboard/UserCertificates";
 import UserRequests from "../components/userDashboard/UserRequests";
 import "../styles/userDashboard/UserDashboard.css";
 import logo from "../assets/dummy-user.png";
+import { contractInstance } from "../components/ContractInstance";
+import { useAccount } from "wagmi";
 
 function UserDashboard(props) {
-  console.log("Usr Dashboard------", props.userData);
-  // const user = {
-  //   id: 'abhishek000097',
-  //   name: 'Abhishek',
-  //   email: 'abhishek@gmail.com',
-  //   walletaddress: '0x4655B0c408Ee7481597Afc26B6730e30593c368E',
-  //   profilePhoto: logo,
-  // };
+  const { address } = useAccount();
+  const [userData, setUserData] = useState("");
 
   const [displaySection, setDisplaySection] = useState("certificates");
 
@@ -29,6 +25,35 @@ function UserDashboard(props) {
     }
   };
 
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const contract = await contractInstance();
+
+        const data = await contract.getUser(address);
+        console.log(data);
+        if (data) {
+          const url = "https://ipfs.io/ipfs/" + data.profileImage;
+          console.log(url);
+          setUserData({
+            email: data.email,
+            profileCID: url,
+            name: data.name,
+            country: data.country,
+          });
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    if (address) {
+      fetchProfile();
+    }
+    return () => {
+      setUserData("");
+    };
+  }, [address]);
+
   return (
     <>
       <div className="container  user-details-container">
@@ -36,7 +61,7 @@ function UserDashboard(props) {
           <div className="col-4 col-md-5 d-flex flex-column align-items-center user-details-image">
             <div className="rounded-circle overflow-hidden mb-2 border border-secondary">
               <img
-                src={logo}
+                src={userData.profileCID ? userData.profileCID : logo}
                 alt="User Profile"
                 className=" object-fit-cover"
               />
@@ -44,10 +69,10 @@ function UserDashboard(props) {
           </div>
 
           <div className="col-8 col-md-5 user-details-info">
-            <h1>User Name</h1>
-            <h5>login to get email address</h5>
+            <h1>{userData && userData.name}</h1>
+            <h5>{userData && userData.email}</h5>
             {/* <h6>{user.id}</h6> */}
-            <p>login to get wallet address</p>
+            <p>{address ? address : ""}</p>
           </div>
           <div className="edit-profile-button-div">
             <button>Edit Profile</button>
