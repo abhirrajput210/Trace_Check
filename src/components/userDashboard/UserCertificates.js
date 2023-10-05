@@ -122,8 +122,13 @@ function UserCertificates() {
                   Upload Date: {certificate.uploadDate}
                 </p>
                 <button
-                  className="btn btn-primary btn-block"
+                  className="btn "
                   onClick={() => handleOpenModal(certificate)}
+                  style={{
+                    backgroundColor: "#f24080",
+                    color: "white",
+                    border: "1px solid #f24080",
+                  }}
                 >
                   View More
                 </button>

@@ -20,7 +20,12 @@ contract CertificateManagement {
         Verified,
         Rejected
     }
+    enum RequestType {
+        Issue,
+        Verify
+    }
     struct Authority {
+        address authorityAddress;
         string orgName;
         string email;
         string profileImage;
@@ -45,15 +50,20 @@ contract CertificateManagement {
         string description;
         string uploadCertificateCID;
         VerificationStatus status;
+        
     }
+  
     address[] private addresses;
     mapping(address => Authority) private authorityMapping;
     mapping(address => bool) private isAuthorityAddedMapping;
     mapping(address => User) private usersMapping;
     mapping(address => bool) private isUserAddedMapping;
     mapping(address => Certificate[]) private userCertificates;
+    mapping(address => uint256) private userIDs;
+    uint256 private nextUserID = 1; // Initialize the next user ID
     uint256 public certificateCounter;
     mapping(uint256 => Certificate) public certificates;
+    // mapping(uint256 => VerificationRequest) public verificationRequests;
     modifier onlyAuthority() {
         require(
             isAuthorityAddedMapping[msg.sender],
@@ -73,10 +83,9 @@ contract CertificateManagement {
         address indexed userAddress,
         string certificateCID
     );
-    event CertificateVerified(
-        uint256 indexed certificateId,
-        VerificationStatus status
-    );
+   
+   
+
     function setAuthority(
         string memory _name,
         string memory _email,
@@ -93,6 +102,7 @@ contract CertificateManagement {
             "You are already registered as a User so you cann't be an Institute/authority"
         );
         authorityMapping[msg.sender] = Authority(
+            msg.sender,
             _name,
             _email,
             _profileImage,
@@ -101,29 +111,36 @@ contract CertificateManagement {
             new address[](0) // Initialize alumni array
         );
         isAuthorityAddedMapping[msg.sender] = true;
+        addresses.push(msg.sender);
     }
     function setUser(
-        string memory _name,
-        string memory _email,
-        string memory _country,
-        string memory _profileImage
+        string memory name,
+        string memory email,
+        string memory country,
+        string memory profileImage
     ) public {
         require(!isUserAddedMapping[msg.sender], "User is already registered");
         require(
             !isAuthorityAddedMapping[msg.sender],
             "User is already registered as an authority"
         );
+        uint256 userID = nextUserID; // Assign the next available user ID
+        nextUserID++; // Increment the next user ID for the next registration
         usersMapping[msg.sender] = User(
-            _name,
-            _email,
-            _profileImage,
-            _country,
+            name,
+            email,
+            profileImage,
+            country,
             address(0)
         ); // Initialize authority address to 0
         isUserAddedMapping[msg.sender] = true;
+        userIDs[msg.sender] = userID; // Map the user's address to the user ID
+        addresses.push(msg.sender);
     }
     function getUser(address _userAddress) external view returns (User memory) {
-        require(isUserAddedMapping[_userAddress], "User does not exist");
+        uint256 userID = userIDs[_userAddress]; // Get the user's ID
+        // Check if the user exists
+        require(userID > 0, "User does not exist");
         return usersMapping[_userAddress];
     }
     function updateUser(
@@ -197,24 +214,37 @@ contract CertificateManagement {
         userCertificates[msg.sender].push(newCertificate);
         certificates[certificateCounter] = newCertificate;
         certificateCounter++;
-        emit CertificateRequested(
-            newCertificate.certificateID,
-            msg.sender,
-            newCertificate.uploadCertificateCID
-        );
-        // If the user registered under an authority, add them to the authority's alumni list
+      
         if (usersMapping[msg.sender].authority != address(0)) {
             issuingAuthority.alumni.push(msg.sender);
         }
     }
-    function getAuthorityCertificate(address userID)
-        external
-        view
-        returns (Certificate[] memory)
-    {
-        return userCertificates[userID];
+
+
+     function getCertificatesByIssuingAuthority(address _authority) public view returns (Certificate[] memory) {
+        Certificate[] memory result = new Certificate[](certificateCounter);
+        uint256 count = 0;
+        
+        for (uint256 i = 0; i < certificateCounter; i++) {
+            if (certificates[i].issuingAuthority == _authority) {
+                result[count] = certificates[i];
+                count++;
+            }
+        }
+        
+        // Resize the result array to the actual count of matching certificates
+        assembly {
+            mstore(result, count)
+        }
+        
+        return result;
     }
-    function requestVerification(uint256 _certificateId) external {
+
+
+    function requestVerification(
+        uint256 _certificateId
+
+    ) external {
         require(
             certificates[_certificateId].issuingAuthority == msg.sender,
             "Only the certificate owner can request verification"
@@ -222,28 +252,31 @@ contract CertificateManagement {
         require(
             certificates[_certificateId].status ==
                 VerificationStatus.NotVerified,
-            "Certificate is not eligible for verification"
+            "Certificate is not el igible for verification"
         );
-        certificates[_certificateId].status = VerificationStatus.Pending;
-        emit CertificateVerified(_certificateId, VerificationStatus.Pending);
+        certificates[_certificateId].status = VerificationStatus.Verified;
+      
     }
-    function verifyCertificate(uint256 _certificateId, bool _accepted)
+    function verifyCertificate(uint256 _certificateId, bool _accepted , string memory _cid )
         external
         onlyIssuingAuthority(_certificateId)
     {
         require(
-            certificates[_certificateId].status == VerificationStatus.Pending,
+            !(certificates[_certificateId].status == VerificationStatus.Rejected),
             "Certificate is not pending verification"
         );
         if (_accepted) {
             certificates[_certificateId].status = VerificationStatus.Verified;
+            if(!(bytes(_cid).length == 0))
+            {
+            certificates[_certificateId].uploadCertificateCID = _cid;
+            }
+            
+            
         } else {
             certificates[_certificateId].status = VerificationStatus.Rejected;
         }
-        emit CertificateVerified(
-            _certificateId,
-            certificates[_certificateId].status
-        );
+    
     }
     function getCertificateStatus(uint256 _certificateId)
         external
@@ -296,20 +329,26 @@ contract CertificateManagement {
         );
         return userCertificates[_userAddress];
     }
-    // Function to allow users to submit unverified certificates
     function addCertiByUser(
         string memory certificateTitle,
         CertificationType certificationType,
         uint256 from,
         uint256 to,
         string memory description,
-        string memory uploadCertificateCID
+        string memory uploadCertificateCID,
+        address authorityAddress
     ) external {
-        require(isUserAddedMapping[msg.sender], "User is not registered");
+        uint256 userID = userIDs[msg.sender]; // Get the user's ID
+        // Check if the user exists
+        require(userID > 0, "User is not registered");
+        require(
+            isAuthorityAddedMapping[authorityAddress],
+            "The specified authority does not exist"
+        );
         Certificate memory newCertificate = Certificate({
             certificateTitle: certificateTitle,
             certificateID: certificateCounter,
-            issuingAuthority: address(0), // Initially set to address(0) for unverified
+            issuingAuthority: authorityAddress, // Set the issuing authority address
             certificationType: certificationType,
             from: from,
             to: to,
@@ -320,36 +359,51 @@ contract CertificateManagement {
         userCertificates[msg.sender].push(newCertificate);
         certificates[certificateCounter] = newCertificate;
         certificateCounter++;
-        emit CertificateRequested(
-            newCertificate.certificateID,
-            msg.sender,
-            newCertificate.uploadCertificateCID
-        );
+     
     }
-    function getAllAuthorities() external view returns (address[] memory) {
-        address[] memory authorities = new address[](addresses.length);
-        uint256 authorityCount = 0;
-        for (uint256 i = 0; i < addresses.length; i++) {
-            if (isAuthorityAddedMapping[addresses[i]]) {
-                authorities[authorityCount] = addresses[i];
-                authorityCount++;
+    function getAllRegisteredAuthorities() external view returns (Authority[] memory) {
+        uint256 numAuthorities = addresses.length;
+        uint256 counter =0;
+        Authority[] memory registeredAuthorities = new Authority[](numAuthorities);
+        for (uint256 i = 0; i < numAuthorities; i++) {
+            address authorityAddress = addresses[i];
+            if (isAuthorityAddedMapping[authorityAddress]) {
+                registeredAuthorities[counter++] = authorityMapping[authorityAddress];
             }
         }
-        // Resize the authorities array to the actual number of authorities
-        assembly {
-            mstore(authorities, authorityCount)
-        }
-        return authorities;
+        return registeredAuthorities;
     }
-    function getAuthorityName(address _authorityAddress)
-        external
-        view
-        returns (string memory)
-    {
+   
+    function requestCertiByUser(
+        string memory certificateTitle,
+        CertificationType certificationType,
+        uint256 from,
+        uint256 to,
+        string memory description,
+        address authorityAddress
+    ) external {
+        uint256 userID = userIDs[msg.sender]; // Get the user's ID
+        // Check if the user exists
+        require(userID > 0, "User is not registered");
         require(
-            isAuthorityAddedMapping[_authorityAddress],
+            isAuthorityAddedMapping[authorityAddress],
             "The specified authority does not exist"
         );
-        return authorityMapping[_authorityAddress].orgName;
+        // Create a new Certificate without the CID
+        Certificate memory newCertificate = Certificate({
+            certificateTitle: certificateTitle,
+            certificateID: certificateCounter,
+            issuingAuthority: authorityAddress, // Set the issuing authority address
+            certificationType: certificationType,
+            from: from,
+            to: to,
+            description: description,
+            uploadCertificateCID: "", // No CID for this request
+            status: VerificationStatus.NotVerified
+        });
+        userCertificates[msg.sender].push(newCertificate);
+        certificates[certificateCounter] = newCertificate;
+        certificateCounter++;
+      
     }
 }

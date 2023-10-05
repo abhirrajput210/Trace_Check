@@ -32,7 +32,50 @@
         "type": "string"
       }
     ],
-    "name": "addCertificate",
+    "name": "addCertiByAuth",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "certificateTitle",
+        "type": "string"
+      },
+      {
+        "internalType": "enum CertificateManagement.CertificationType",
+        "name": "certificationType",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "from",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "to",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "description",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "uploadCertificateCID",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "authorityAddress",
+        "type": "address"
+      }
+    ],
+    "name": "addCertiByUser",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -63,25 +106,6 @@
     "type": "event"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "certificateId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "enum CertificateManagement.VerificationStatus",
-        "name": "status",
-        "type": "uint8"
-      }
-    ],
-    "name": "CertificateVerified",
-    "type": "event"
-  },
-  {
     "inputs": [
       {
         "internalType": "address",
@@ -90,6 +114,44 @@
       }
     ],
     "name": "registerUnderAuthority",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "certificateTitle",
+        "type": "string"
+      },
+      {
+        "internalType": "enum CertificateManagement.CertificationType",
+        "name": "certificationType",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "from",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "to",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "description",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "authorityAddress",
+        "type": "address"
+      }
+    ],
+    "name": "requestCertiByUser",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -144,6 +206,34 @@
     "inputs": [
       {
         "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "email",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "country",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "profileImage",
+        "type": "string"
+      }
+    ],
+    "name": "setUser",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
         "name": "_name",
         "type": "string"
       },
@@ -163,7 +253,7 @@
         "type": "string"
       }
     ],
-    "name": "setUser",
+    "name": "updateAuthority",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -207,6 +297,11 @@
         "internalType": "bool",
         "name": "_accepted",
         "type": "bool"
+      },
+      {
+        "internalType": "string",
+        "name": "_cid",
+        "type": "string"
       }
     ],
     "name": "verifyCertificate",
@@ -288,6 +383,69 @@
   },
   {
     "inputs": [],
+    "name": "checkUserType",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAllRegisteredAuthorities",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "authorityAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "orgName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "profileImage",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "country",
+            "type": "string"
+          },
+          {
+            "internalType": "enum CertificateManagement.OrgType",
+            "name": "orgType",
+            "type": "uint8"
+          },
+          {
+            "internalType": "address[]",
+            "name": "alumni",
+            "type": "address[]"
+          }
+        ],
+        "internalType": "struct CertificateManagement.Authority[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "getAlumniList",
     "outputs": [
       {
@@ -311,6 +469,11 @@
     "outputs": [
       {
         "components": [
+          {
+            "internalType": "address",
+            "name": "authorityAddress",
+            "type": "address"
+          },
           {
             "internalType": "string",
             "name": "orgName",
@@ -354,11 +517,11 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "userID",
+        "name": "_authority",
         "type": "address"
       }
     ],
-    "name": "getAuthorityCertificate",
+    "name": "getCertificatesByIssuingAuthority",
     "outputs": [
       {
         "components": [
@@ -476,6 +639,143 @@
         "internalType": "struct CertificateManagement.User",
         "name": "",
         "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_userAddress",
+        "type": "address"
+      }
+    ],
+    "name": "getUserCertificates",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "certificateTitle",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "certificateID",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "issuingAuthority",
+            "type": "address"
+          },
+          {
+            "internalType": "enum CertificateManagement.CertificationType",
+            "name": "certificationType",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "from",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "to",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "uploadCertificateCID",
+            "type": "string"
+          },
+          {
+            "internalType": "enum CertificateManagement.VerificationStatus",
+            "name": "status",
+            "type": "uint8"
+          }
+        ],
+        "internalType": "struct CertificateManagement.Certificate[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_userAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_authorityAddress",
+        "type": "address"
+      }
+    ],
+    "name": "getUserCertificatesUnderAuthority",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "certificateTitle",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "certificateID",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "issuingAuthority",
+            "type": "address"
+          },
+          {
+            "internalType": "enum CertificateManagement.CertificationType",
+            "name": "certificationType",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "from",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "to",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "uploadCertificateCID",
+            "type": "string"
+          },
+          {
+            "internalType": "enum CertificateManagement.VerificationStatus",
+            "name": "status",
+            "type": "uint8"
+          }
+        ],
+        "internalType": "struct CertificateManagement.Certificate[]",
+        "name": "",
+        "type": "tuple[]"
       }
     ],
     "stateMutability": "view",

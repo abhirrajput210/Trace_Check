@@ -1,13 +1,12 @@
 import React from "react";
 import "../../styles/footer/Footer.css";
-import logo from "../../assets/logo.svg";
 
 function Footer() {
   return (
     <footer>
       <div className="row">
         <div className="col">
-          <img src={logo} alt="logo" className="logo" />
+          {/* <img src={logo} alt="logo" className="logo" /> */}
           <p>
             The word Lorem Ipsum is derived from the Latin word which means
             “pain itself”. It is a kind of a text filler tool that is used by

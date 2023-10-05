@@ -63,8 +63,13 @@ function IssueCertificate() {
       <div className="row">
         <div className="col-12 d-flex justify-content-end mb-4">
           <button
-            className="btn btn-primary"
+            className="btn "
             onClick={handleIssueCertificateClick}
+            style={{
+              backgroundColor: "#f24080",
+              color: "white",
+              border: "1px solid #f24080",
+            }}
           >
             + Issue Certificate
           </button>
@@ -85,8 +90,13 @@ function IssueCertificate() {
                   Issuing Date: {certificate.issueDate}
                 </p>
                 <button
-                  className="btn btn-primary btn-block"
+                  className="btn btn-block"
                   onClick={() => handleOpenModal(certificate)}
+                  style={{
+                    backgroundColor: "#f24080",
+                    color: "white",
+                    border: "1px solid #f24080",
+                  }}
                 >
                   View More
                 </button>

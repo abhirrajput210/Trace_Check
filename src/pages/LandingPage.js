@@ -7,7 +7,32 @@ import "../styles/landingPage/LandingPage.css"; // Import the CSS file for this 
 import ContentInfo from "../components/issuingAuthority/ContentInfo";
 import GetStarted from "../components/landingPage/GetStarted";
 import Imagelanding from "../assets/landingZig.png";
+import { contractInstance } from "../components/ContractInstance";
+import { useAccount } from "wagmi";
+import { useNavigate } from "react-router-dom";
 function App() {
+  const { address } = useAccount();
+  const navigate = useNavigate();
+  const fetchProfile = async (type) => {
+    try {
+      const contract = await contractInstance();
+      const user = await contract.checkUserType(address);
+      if (user === 1) {
+        navigate("/user/dashboard");
+      } else if (user === 2) {
+        navigate("/issuing-authority/dashboard");
+      } else if (user === 0) {
+        if (type === "user") {
+          navigate("/registration/user");
+        } else {
+          navigate("/registration/issuing-authority");
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <section className="home-banner">
@@ -59,7 +84,7 @@ function App() {
         </div>
       </section>
       <ContentInfo />
-      <GetStarted />
+      <GetStarted fetchProfile={fetchProfile} />
     </>
   );
 }

@@ -1,25 +1,13 @@
 import React, { useState } from "react";
 import "../../styles/issuingAuthority/TrackAlumni.css";
-import logo from "../../assets/dummy-user.png";
+import logo from "../../assets/flipbox-4.jpg";
 
 function TrackAlumni() {
   const initialAlumniData = [
     {
-      id: "johndoe0097",
-      name: "John Doe",
-      email: "doe726785@gmail.com",
-      profilePhoto: logo,
-    },
-    {
-      id: "janesmith001",
-      name: "Jane Smith",
-      email: "jane.smith@gmail.com",
-      profilePhoto: logo,
-    },
-    {
-      id: "alumni003",
-      name: "John Doe",
-      email: "john.doe@example.com",
+      id: "jake0097",
+      name: "Jake",
+      email: "test@gmail.com",
       profilePhoto: logo,
     },
   ];

@@ -16,7 +16,8 @@
   background: #41246d;
   color: #fff;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  height: auto;
+  height: 100vh;
+  padding-top: 100px;
 }
 
 .certificate-container {
@@ -37,7 +38,7 @@
 
 .access-control-container {
   width: 50%;
-  height: 60%;
+  height: auto;
   padding: 40px;
   background: #fceaea;
   border-radius: 10px;
@@ -62,6 +63,8 @@ p {
 /* Access Control styles */
 .access-form {
   margin-top: 30px;
+  width: 60%;
+  margin: auto;
 }
 
 .input-dropdown-container {
@@ -118,15 +121,15 @@ input[type="text"]:focus {
 /* Dropdown List styles */
 .dropdown-list {
   list-style-type: none;
-  padding: 5;
-  position: absolute;
+  padding: 10px;
   width: 100%;
+  margin: auto;
   color: #2d184c;
   background-color: #fceae9;
   border: 5px solid #ccc;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-height: 150px;
+  max-height: 300px;
   overflow-y: auto;
   display: none;
   z-index: 1;
@@ -138,7 +141,7 @@ input[type="text"]:focus {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #ffffff;
-  padding: 3px 50px;
+  padding: 10px 50px;
 }
 
 .remove-button {
@@ -189,10 +192,12 @@ input[type="text"]:focus {
 .newdiv {
   background-color: #2d184c;
   color: #fff;
+  height: 100vh;
 }
 .acchead {
   font-size: 50px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: 700;
-  margin-left: 40%;
+  text-align: center;
+  padding: 50px 0;
 }

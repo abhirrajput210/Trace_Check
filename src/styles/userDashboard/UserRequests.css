@@ -18,6 +18,7 @@
 .request-type-filter {
   display: flex;
   align-items: center;
+  gap: 20px;
 }
 
 .request-type-filter select {
@@ -27,14 +28,11 @@
 }
 
 .request-certificate-button {
-  margin-left: 10px;
   padding: 8px;
   font-size: 16px;
   border-radius: 10px;
-  background-color: #3b71ca;
   border: none;
   color: white;
-  width: 300px;
 }
 
 .requests-table {

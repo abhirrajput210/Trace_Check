@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCertificate,
@@ -15,11 +15,16 @@ import "../../styles/userDashboard/AddCertificate.css";
 //   SchemaRegistry,
 // } from "@ethereum-attestation-service/eas-sdk";
 import { ethers } from "ethers";
-export const EASContractAddress = 0xc2679fbd37d54388ce493f1db75320d236e1815e;
-const SchemaUid =
-  "0x5bf4cc0ab2c047682631a29b76a91d043c9e68bf22df35de92b38fdac270001b";
+import { contractInstance } from "../ContractInstance";
+const API_TOKEN =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweGZiNzE4QzgwYmJlYUQwNTAzYThFMjgzMmI2MDU0RkVmOUU4MzA2NzQiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NjE0MTEzNjczNTAsIm5hbWUiOiJUcnkifQ.srPPE7JD3gn8xEBCgQQs_8wyo6rDrXaDWC0QM8FtChA";
+
+const client = new Web3Storage({ token: API_TOKEN });
 
 const AddCertificate = () => {
+  const [file, setFile] = useState("");
+  const [fileName, setFileName] = useState("");
+  const [authorities, setAuthorities] = useState([]);
   const navigate = useNavigate();
   const [certificateData, setCertificateData] = useState({
     title: "",
@@ -36,16 +41,93 @@ const AddCertificate = () => {
     setCertificateData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setCertificateData((prevData) => ({ ...prevData, certificateFile: file }));
+  const convertToEpoch = (dateString) => {
+    const date = new Date(dateString);
+    return date.getTime();
   };
 
+  useEffect(() => {
+    const fetchAuthorities = async () => {
+      try {
+        const contract = await contractInstance();
+
+        const data = await contract.getAllRegisteredAuthorities();
+        console.log(data);
+        if (data) {
+          setAuthorities(data);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchAuthorities();
+  }, []);
+
+  async function uploadImage(e) {
+    // console.log(e.target.value);
+    console.log(document.getElementById("certificateFile").files[0].name);
+    setFileName(document.getElementById("certificateFile").files[0].name);
+    console.log(URL.createObjectURL(e.target.files[0]));
+    setFile(URL.createObjectURL(e.target.files[0]));
+  }
+
+  async function handleUpload() {
+    var fileInput = document.getElementById("certificateFile");
+
+    let cid;
+
+    cid = await client.put(fileInput.files);
+
+    console.log(cid);
+
+    let image_cid;
+
+    image_cid = cid + "/" + fileName;
+
+    console.log(image_cid);
+    setCertificateData({ ...certificateData, certificateFile: image_cid });
+    handleSubmit(image_cid);
+    // setFile(url);
+  }
+  const handleSubmit = async (img_cid) => {
+    try {
+      const contract = await contractInstance();
+      let fromDate = convertToEpoch(certificateData.fromDate);
+      let toDate = convertToEpoch(certificateData.toDate);
+      console.log(
+        certificateData.title,
+        certificateData.type,
+        fromDate,
+        toDate,
+        certificateData.description,
+        img_cid,
+        certificateData.issuingAuthority
+      );
+
+      const tx = await contract.setUser(
+        certificateData.title,
+        certificateData.type,
+        fromDate,
+        toDate,
+        certificateData.description,
+        img_cid,
+        certificateData.issuingAuthority
+      );
+
+      let receipt = await tx.wait();
+      console.log(receipt);
+      if (receipt) {
+        navigate("/user/dashboard");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="center-form">
       <div className="add-certificate-main-container">
         <div className="add-certificate-registration-container">
-          <form className="add-certificate-form">
+          <div className="add-certificate-form">
             <div className="add-certificate-registration-header">
               <div className="add-certificate-registration-title">
                 Add Certificate
@@ -66,7 +148,7 @@ const AddCertificate = () => {
             </div>
             <div className="add-certificate-form-group">
               <label htmlFor="issuingAuthority">Issuing Authority Name</label>
-              <input
+              <select
                 className="w-100"
                 type="text"
                 id="issuingAuthority"
@@ -75,7 +157,13 @@ const AddCertificate = () => {
                 onChange={handleInputChange}
                 required
                 placeholder="Issuing Authority Name"
-              />
+              >
+                <option value="">Select Authority / Institute</option>
+                {authorities.length > 0 &&
+                  authorities.map(() => (
+                    <option value="academic">Academic</option>
+                  ))}
+              </select>
             </div>
             <div className="add-certificate-form-group">
               <label htmlFor="type">Certificate Type</label>
@@ -138,21 +226,21 @@ const AddCertificate = () => {
               />
             </div>
             <div className="add-certificate-form-group">
-              <label htmlFor="profilePhoto">Certificate File - </label>
+              <label htmlFor="profilePhoto">Certificate Image - </label>
               <input
                 className="w-100"
                 type="file"
                 id="certificateFile"
                 name="certificateFile"
-                onChange={handleFileChange}
-                accept="application/pdf,image/*"
+                onChange={uploadImage}
+                accept="image/png, image/gif, image/jpeg"
                 required
               />
             </div>
-            <button className="add-certificate-button" type="submit">
+            <button className="add-certificate-button" onClick={handleUpload}>
               Add Certificate
             </button>
-          </form>
+          </div>
         </div>
       </div>
     </div>

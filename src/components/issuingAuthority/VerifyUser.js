@@ -1,37 +1,13 @@
 import React, { useState } from "react";
 import "../../styles/issuingAuthority/VerifyUser.css";
-import logo from "../../assets/dummy-user.png";
+import logo from "../../assets/flipbox-4.jpg";
 
 function VerifyUser() {
   const initialAlumniData = [
     {
-      id: "alumni001",
-      name: "John Doe",
-      email: "john.doe@example.com",
-      profilePhoto: logo,
-    },
-    {
-      id: "alumni002",
-      name: "Jane Smith",
-      email: "jane.smith@example.com",
-      profilePhoto: logo,
-    },
-    {
-      id: "alumni003",
-      name: "John Doe",
-      email: "john.doe@example.com",
-      profilePhoto: logo,
-    },
-    {
-      id: "alumni004",
-      name: "John Doe",
-      email: "john.doe@example.com",
-      profilePhoto: logo,
-    },
-    {
-      id: "alumni005",
-      name: "John Doe",
-      email: "john.doe@example.com",
+      id: "jake0097",
+      name: "Jake",
+      email: "test@example.com",
       profilePhoto: logo,
     },
   ];

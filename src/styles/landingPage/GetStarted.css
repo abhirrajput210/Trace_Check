@@ -62,3 +62,8 @@
   padding: 40px;
   border-radius: 10px;
 }
+
+.userinfo {
+  margin: 50px 0;
+  text-align: left;
+}

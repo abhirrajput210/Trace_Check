@@ -43,7 +43,7 @@ function UserRequests() {
             <option value="Issuing Certificate">Issuing Certificate</option>
           </select>
           <button
-            className="bg-primary request-certificate-button"
+            className="request-certificate-button"
             onClick={handleRequestCertificateClick}
           >
             + Request Certificate
