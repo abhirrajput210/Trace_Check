@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import css from "../../styles/landingPage/ContentInfo.css";
-
-
 
 function Step(props) {
   return (
@@ -19,32 +17,32 @@ function App() {
   return (
     <section className="workflow">
       <div className="workflow-header">
-        <h6>Tracecheck Workflow</h6>
-        <h1>How it works</h1>
+        <h1>How it Works</h1>
+        <h6 className="workflow-img">
+          <br></br>
+          <h2 style={{ margin: "50px 0" }}> TraceCheck Workflow</h2>
+        </h6>
       </div>
       <div className="workflow-steps">
         <Step
           stepNumber="01"
-          title="Create a Free Account"
-          description="Sign up for free to gain access to Certopus as well as 50 free certificate credits to try out the services."
+          title="Login or Signup "
+          description="Users can sign in as Individuals or Issuing Authorities to access the platform’s features and services."
         />
-        <div className="arrow arrow-dotted"></div> {/* Arrow div */}
         <Step
           stepNumber="02"
-          title="Design your Certificates"
-          description="Design certificates using our template engine, which includes a rich library of professionally designed certificates."
+          title="Role Based Actions"
+          description="Institutions and companies issue certificates. Users can request certificates to enhance their profiles, streamlining background checks and job applications. "
         />
-        <div className="arrow arrow-dotted"></div> {/* Arrow div */}
         <Step
           stepNumber="03"
-          title="Issue Certificates"
-          description="You can bulk generate high-quality PDF and deliver the personalized certificates to the recipients in a few clicks!"
+          title="Certificate Management"
+          description="All issued and received certificates are securely stored on the blockchain and displayed on the user’s dashboard for easy access and reference."
         />
-        <div className="arrow arrow-dotted"></div> {/* Arrow div */}
         <Step
           stepNumber="04"
           title="Get Insights"
-          description="Get insights on the performance of your certification campaign, and the best audience response!"
+          description="Issuing authorities monitor alumni success, while individual users gain career insights and use the platform for employment proof and advancement."
         />
       </div>
     </section>

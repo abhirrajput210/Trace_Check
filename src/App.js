@@ -7,7 +7,6 @@ import Footer from "./components/footer/Footer";
 // import CertificatesPage from "./components/individualUser/userCertificates/CertificatesPage";
 import LandingPage from "./pages/LandingPage";
 
-import SingleCertificate from "./pages/SingleCertificate";
 import Navbar from "./components/navbar/Navbar";
 import UserRegistrationPage from "./pages/UserRegistrationPage";
 import IARegistrationPage from "./pages/IARegistrationPage";
@@ -18,6 +17,7 @@ import { useEffect } from "react";
 import IADashboard from "./pages/IADashboard";
 import RequestCertificate from "./components/userDashboard/RequestCertificate";
 import IssueCertificateForm from "./components/issuingAuthority/IssueCertificateForm";
+import SingleCertificate from "./pages/SingleCertificate";
 
 function App() {
   return (

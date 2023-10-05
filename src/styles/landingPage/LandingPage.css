@@ -15,7 +15,7 @@ p {
 /* Section styles */
 .home-banner {
   background-color: #41246d;
-  padding: 60px 0;
+  padding: 80px 0;
   display: flex; /* Use flexbox to control the vertical alignment */
   align-items: flex-end; /* Align items to the bottom of the container */
 }
@@ -37,10 +37,15 @@ p {
 }
 /* Image2 styles */
 .image2-opacity {
-  opacity: 0.3;
+  opacity: 0.15;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 26%;
+  right: 62%;
+}
+.image3 {
+  position: absolute;
+  top: 227%;
+  right: -300%;
 }
 
 /* Banner content styles */
@@ -49,14 +54,20 @@ p {
   color: #fff;
   border-radius: 5px;
   padding: 20px;
+  margin-top: 30%;
+  margin-left: 10%;
+  width: 100%;
 }
 
 .banner-title {
   background-color: #41246d;
-  margin-bottom: 20px;
+  padding: px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  margin-bottom: 5px;
   text-align: center;
-  font-size: 60px;
-  font-weight: 600;
+  font-size: 52px;
+  font-weight: 700;
+  width: 109%;
 }
 
 .banner-text {
@@ -132,5 +143,32 @@ p {
   .mobile-banner-img {
     max-width: 100%;
     height: auto;
+  }
+}
+.tick-icon {
+  color: #f95a94;
+}
+/* Add this CSS to your stylesheet */
+.tick-icon {
+  padding-left: 10px;
+  display: inline-block;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.3s, transform 0.3s;
+  animation: pop-up 1s ease-in-out 0.5s forwards;
+}
+
+@keyframes pop-up {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }

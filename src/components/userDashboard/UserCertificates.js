@@ -79,8 +79,9 @@ function UserCertificates() {
   const [selectedCertificate, setSelectedCertificate] = useState(null);
 
   const handleOpenModal = (certificate) => {
-    setSelectedCertificate(certificate);
-    setModalOpen(true);
+    // setSelectedCertificate(certificate);
+    // setModalOpen(true);
+    navigate("/certificate");
   };
 
   const handleCloseModal = () => {

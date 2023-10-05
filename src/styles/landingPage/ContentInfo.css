@@ -1,71 +1,74 @@
-/* Background and text color for the entire workflow section */
 .workflow {
-    background: #ea3a60;
-    color: #f8f7f7;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px; /* Add padding for spacing */
+  background: #ea3a60;
+  color: #f8f7f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px; /* Add padding for spacing */
 }
-  
-  /* Adjust header styles */
-  .workflow-header {
-    margin-bottom: 20px;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-   
-  }
-  
-  /* Adjust styling for steps container */
+
+/* Adjust header styles */
+.workflow-header {
+  margin-bottom: 20px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+/* Adjust styling for steps container */
+.workflow-steps {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Allow steps to wrap on smaller screens */
+  width: 100%;
+  max-width: 1100px; /* Adjust as needed */
+  margin: 20px 0; /* Add spacing above and below the steps */
+}
+
+/* Adjust styling for individual steps */
+.step {
+  flex: 1;
+  padding: 40px;
+  text-align: left;
+  margin: 10px; /* Adjust spacing between steps */
+
+  border-radius: 10px;
+}
+
+/* Styling for step numbers */
+.step-number {
+  background: #f8f7f7;
+  font-weight: 800;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: rgb(19, 19, 81);
+  font-size: 24px;
+  margin-bottom: 10px;
+  border-radius: 30%; /* Make it a circle */
+  width: 50px; /* Set a fixed width for circular step numbers */
+  height: 50px; /* Set a fixed height for circular step numbers */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Adjust step content styles */
+.step-content {
+  font-size: 16px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 768px) {
   .workflow-steps {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; /* Allow steps to wrap on smaller screens */
-    width: 100%;
-    max-width: 1100px; /* Adjust as needed */
-    margin: 20px 0; /* Add spacing above and below the steps */
+    flex-direction: column; /* Stack steps vertically on smaller screens */
   }
-  
-  /* Adjust styling for individual steps */
+
   .step {
-    flex: 1;
-    padding: 40px;
-    text-align: left;
-    margin: 10px; /* Adjust spacing between steps */
-   
-    border-radius: 10px;
+    margin: 10px 0; /* Adjust vertical spacing between steps */
   }
-  
-  /* Styling for step numbers */
-  .step-number {
-    background: #f8f7f7;
-    font-weight: 800;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    color: rgb(19, 19, 81);
-    font-size: 24px;
-    margin-bottom: 10px;
-    border-radius: 30%; /* Make it a circle */
-    width: 50px; /* Set a fixed width for circular step numbers */
-    height: 50px; /* Set a fixed height for circular step numbers */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Adjust step content styles */
-  .step-content {
-    font-size: 16px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  }
-  
-  /* Media query for screens smaller than 768px */
-  @media (max-width: 768px) {
-    .workflow-steps {
-      flex-direction: column; /* Stack steps vertically on smaller screens */
-    }
-  
-    .step {
-      margin: 10px 0; /* Adjust vertical spacing between steps */
-    }
-  }
- 
+}
+.workflow-img {
+  /* Add the background image and set its properties */
+  background-image: url(../../assets/line-shape-3.png);
+  background-size: 100%; /* This will cover the entire section */
+  background-repeat: no-repeat; /* Prevent image repetition */
+}

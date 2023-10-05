@@ -1,7 +1,10 @@
 // Import necessary libraries and CSS
 import React, { useState } from "react";
-import "../styles/individualUser/Singlecertificate.css"; // Import your existing CSS file
-import Certiimg from "../assets/certificate.jpg";
+import "../../styles/individualUser/Singlecertificate.css"; // Import your existing CSS file
+import Certiimg from "../../assets/certificate.jpg";
+
+// Import the new CSS class
+import "../../styles/landingPage/Singlecertificate.css"; // Update the path as needed
 
 const SingleCertificate = () => {
   const [certificateData] = useState({

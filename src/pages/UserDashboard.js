@@ -42,6 +42,8 @@ function UserDashboard(props) {
             country: data.country,
           });
         }
+        const certificates = await contract.getAuthorityCertificate(address);
+        console.log(certificates);
       } catch (err) {
         console.log(err);
       }

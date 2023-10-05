@@ -65,7 +65,7 @@ function IADashboard() {
           <div className="col-4 col-md-5 d-flex flex-column align-items-center user-details-image">
             <div className="rounded-circle overflow-hidden mb-2 border border-secondary">
               <img
-                src={userData.profileCID ? userData.profileCID : ""}
+                src={userData.profileCID ? userData.profileCID : logo}
                 alt="User Profile"
                 className=" object-fit-cover"
               />

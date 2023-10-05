@@ -49,7 +49,7 @@
 }
 .add-certificate-form input[type="text"],
 .add-certificate-form input[type="email"],
-.add-certificate-form input[type="date"] {
+.add-certificate-form input[type="month"] {
   padding: 15px;
   font-family: "Poppins", sans-serif;
   border: none;
@@ -58,7 +58,15 @@
   outline: none;
   background-color: #f8f8f8;
 }
-
+.add-certificate-form textarea {
+  padding: 15px;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  border-radius: 20px;
+  font-size: 15px;
+  outline: none;
+  background-color: #f8f8f8;
+}
 .add-certificate-form select {
   width: 50vh;
   padding: 15px;
@@ -126,7 +134,8 @@
 }
 
 .add-certificate-form input[type="text"]::placeholder,
-.add-certificate-form input[type="email"]::placeholder {
+.add-certificate-form input[type="email"]::placeholder,
+.add-certificate-form textarea::placeholder {
   color: #888;
 }
 .add-certificate-button {
