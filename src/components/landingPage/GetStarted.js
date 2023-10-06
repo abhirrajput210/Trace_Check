@@ -34,8 +34,8 @@ function App(props) {
               onClick={() => props.fetchProfile("user")}
             >
               {props.loading.one ? (
-                <div class="spinner-border" role="status">
-                  <span class="sr-only">Loading...</span>
+                <div className="spinner-border" role="status">
+                  <span className="sr-only">Loading...</span>
                 </div>
               ) : (
                 "Get Started"
@@ -74,8 +74,8 @@ function App(props) {
               onClick={() => props.fetchProfile("authority")}
             >
               {props.loading.two ? (
-                <div class="spinner-border" role="status">
-                  <span class="sr-only">Loading...</span>
+                <div className="spinner-border" role="status">
+                  <span className="sr-only">Loading...</span>
                 </div>
               ) : (
                 "Get Started"

@@ -9,6 +9,7 @@ const API_TOKEN =
 const client = new Web3Storage({ token: API_TOKEN });
 
 function IARegistrationPage() {
+  const [loading, setLoading] = useState(false);
   const [file, setFile] = useState("");
   const [fileName, setFileName] = useState("");
   const [formData, setFormData] = useState({
@@ -37,6 +38,7 @@ function IARegistrationPage() {
   }
 
   async function handleUpload() {
+    setLoading(true);
     var fileInput = document.getElementById("profilePhoto");
 
     let cid;
@@ -79,9 +81,11 @@ function IARegistrationPage() {
       let receipt = await tx.wait();
       console.log(receipt);
       if (receipt) {
+        setLoading(false);
         navigate("/issuing-authority/dashboard");
       }
     } catch (err) {
+      setLoading(false);
       console.log(err);
     }
   };
@@ -417,7 +421,13 @@ function IARegistrationPage() {
             />
           </div>
           <button className="ia-register-button" onClick={handleUpload}>
-            REGISTER
+            {loading ? (
+              <div className="spinner-border" role="status">
+                <span className="sr-only">Loading...</span>
+              </div>
+            ) : (
+              "Register"
+            )}
           </button>
         </div>
       </div>

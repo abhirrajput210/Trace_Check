@@ -53,7 +53,7 @@ function Footer() {
             </div>
           </h3>
           <form className="footer-form">
-            <i class="fa-regular fa-envelope"></i>
+            <i className="fa-regular fa-envelope"></i>
             <input
               className="footer-email"
               type="email"
@@ -61,14 +61,14 @@ function Footer() {
               required
             />
             <button type="submit">
-              <i class="fa-solid fa-arrow-right"></i>
+              <i className="fa-solid fa-arrow-right"></i>
             </button>
           </form>
           <div className="social-icons">
-            <i class="fa-brands fa-facebook"></i>
-            <i class="fa-brands fa-twitter"></i>
-            <i class="fa-brands fa-whatsapp"></i>
-            <i class="fa-brands fa-pinterest"></i>
+            <i className="fa-brands fa-facebook"></i>
+            <i className="fa-brands fa-twitter"></i>
+            <i className="fa-brands fa-whatsapp"></i>
+            <i className="fa-brands fa-pinterest"></i>
           </div>
         </div>
       </div>

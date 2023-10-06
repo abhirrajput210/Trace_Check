@@ -24,6 +24,7 @@ const client = new Web3Storage({ token: API_TOKEN });
 const AddCertificate = () => {
   const [file, setFile] = useState("");
   const [fileName, setFileName] = useState("");
+  const [loading, setLoading] = useState(false);
   const [authorities, setAuthorities] = useState([]);
   const navigate = useNavigate();
   const [certificateData, setCertificateData] = useState({
@@ -72,6 +73,7 @@ const AddCertificate = () => {
   }
 
   async function handleUpload() {
+    setLoading(true);
     var fileInput = document.getElementById("certificateFile");
 
     let cid;
@@ -104,7 +106,7 @@ const AddCertificate = () => {
         certificateData.issuingAuthority
       );
 
-      const tx = await contract.setUser(
+      const tx = await contract.addCertiByUser(
         certificateData.title,
         certificateData.type,
         fromDate,
@@ -117,9 +119,11 @@ const AddCertificate = () => {
       let receipt = await tx.wait();
       console.log(receipt);
       if (receipt) {
+        setLoading(false);
         navigate("/user/dashboard");
       }
     } catch (err) {
+      setLoading(false);
       console.log(err);
     }
   };
@@ -160,8 +164,10 @@ const AddCertificate = () => {
               >
                 <option value="">Select Authority / Institute</option>
                 {authorities.length > 0 &&
-                  authorities.map(() => (
-                    <option value="academic">Academic</option>
+                  authorities.map((item, key) => (
+                    <option value={item.authorityAddress} key={key}>
+                      {item.orgName}
+                    </option>
                   ))}
               </select>
             </div>
@@ -176,8 +182,8 @@ const AddCertificate = () => {
                 required
               >
                 <option value="">Select Type</option>
-                <option value="academic">Academic</option>
-                <option value="work_experience">Work Experience</option>
+                <option value="0">Academic</option>
+                <option value="1">Work Experience</option>
               </select>
             </div>
             <div className="add-certificate-form-group">
@@ -238,7 +244,13 @@ const AddCertificate = () => {
               />
             </div>
             <button className="add-certificate-button" onClick={handleUpload}>
-              Add Certificate
+              {loading ? (
+                <div className="spinner-border" role="status">
+                  <span className="sr-only">Loading...</span>
+                </div>
+              ) : (
+                "Add Certificate"
+              )}
             </button>
           </div>
         </div>
