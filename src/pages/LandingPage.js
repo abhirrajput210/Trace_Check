@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./LandingPage"; // Import your CSS file
 import Image from "../assets/landing.png";
 import Image2 from "../assets/educator.png";
@@ -10,21 +10,45 @@ import Imagelanding from "../assets/landingZig.png";
 import { contractInstance } from "../components/ContractInstance";
 import { useAccount } from "wagmi";
 import { useNavigate } from "react-router-dom";
+import {
+  useConnectModal,
+  useAccountModal,
+  useChainModal,
+} from "@rainbow-me/rainbowkit";
+
 function App() {
+  const { openConnectModal } = useConnectModal();
+  const { address } = useAccount();
+  const [loading, setLoading] = useState({ one: false, two: false });
+
   const navigate = useNavigate();
+
   const fetchProfile = async (type) => {
+    if (!address) {
+      openConnectModal();
+      return;
+    }
+    if (type === "user") {
+      setLoading({ one: true, two: false });
+    } else {
+      setLoading({ one: false, two: true });
+    }
     try {
       const contract = await contractInstance();
       const user = await contract.checkUserType();
       console.log(user);
       if (parseInt(user) === 1) {
+        setLoading({ one: false, two: false });
         navigate("/user/dashboard");
       } else if (parseInt(user) === 2) {
+        setLoading({ one: false, two: false });
         navigate("/issuing-authority/dashboard");
       } else if (parseInt(user) === 0) {
         if (type === "user") {
+          setLoading({ one: false, two: false });
           navigate("/registration/user");
         } else {
+          setLoading({ one: false, two: false });
           navigate("/registration/issuing-authority");
         }
       }
@@ -84,7 +108,7 @@ function App() {
         </div>
       </section>
       <ContentInfo />
-      <GetStarted fetchProfile={fetchProfile} />
+      <GetStarted fetchProfile={fetchProfile} loading={loading} />
     </>
   );
 }

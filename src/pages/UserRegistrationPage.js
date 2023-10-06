@@ -10,6 +10,7 @@ const API_TOKEN =
 const client = new Web3Storage({ token: API_TOKEN });
 
 function UserRegistrationPage() {
+  const [loading, setLoading] = useState(false);
   const [file, setFile] = useState("");
   const [fileName, setFileName] = useState("");
   const navigate = useNavigate();
@@ -38,6 +39,7 @@ function UserRegistrationPage() {
   }
 
   async function handleUpload() {
+    setLoading(true);
     var fileInput = document.getElementById("profilePhoto");
 
     let cid;
@@ -72,9 +74,11 @@ function UserRegistrationPage() {
       let receipt = await tx.wait();
       console.log(receipt);
       if (receipt) {
+        setLoading(false);
         navigate("/user/dashboard");
       }
     } catch (err) {
+      setLoading(false);
       console.log(err);
     }
   };
@@ -395,7 +399,13 @@ function UserRegistrationPage() {
             />
           </div>
           <button className="user-register-button" onClick={handleUpload}>
-            REGISTER
+            {loading ? (
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            ) : (
+              "Register"
+            )}
           </button>
         </div>
       </div>

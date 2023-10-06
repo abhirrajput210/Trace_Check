@@ -30,10 +30,16 @@ function App(props) {
           <div className="banner-button">
             <div
               // href="/registration/user"
-              className="button-round-secondary"
+              className="button-round-secondary get-started"
               onClick={() => props.fetchProfile("user")}
             >
-              GET STARTED
+              {props.loading.one ? (
+                <div class="spinner-border" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              ) : (
+                "Get Started"
+              )}
             </div>
           </div>
         </div>
@@ -64,10 +70,16 @@ function App(props) {
           <div className="banner-button">
             <div
               // href="/registration/user"
-              className="button-round-secondary"
+              className="button-round-secondary get-started"
               onClick={() => props.fetchProfile("authority")}
             >
-              GET STARTED
+              {props.loading.two ? (
+                <div class="spinner-border" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              ) : (
+                "Get Started"
+              )}
             </div>
           </div>
           <br></br>
